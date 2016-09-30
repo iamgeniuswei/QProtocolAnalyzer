@@ -1,5 +1,6 @@
 #ifndef QPDEFINEPCAP_H
 #define QPDEFINEPCAP_H
+#include <glib.h>
 /* Magic numbers in "libpcap" files.
 
    "libpcap" file records are written in the byte order of the host that
@@ -74,4 +75,25 @@ struct pcaprec_nokia_hdr {
     struct pcaprec_hdr hdr;	/* the regular header */
     quint8 stuff[4];	/* mysterious stuff */
 };
+/* See source to the "libpcap" library for information on the "libpcap"
+   file format. */
+
+/*
+ * Private per-wtap_t data needed to read a file.
+ */
+typedef enum {
+    NOT_SWAPPED,
+    SWAPPED,
+    MAYBE_SWAPPED
+} swapped_type_t;
+
+typedef struct {
+    gboolean byte_swapped;
+    swapped_type_t lengths_swapped;
+    guint16	version_major;
+    guint16	version_minor;
+} libpcap_t;
+
+
+
 #endif // QPDEFINEPCAP_H

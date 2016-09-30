@@ -128,7 +128,7 @@ cf_read_status_t QPFileAccessor::cf_read(gboolean from_save)
         //FIXME:
         qDebug() << count++;
         qDebug() << rfvfAccessor->getReader()->getRawPos();
-        read_packet(nullptr, nullptr, nullptr, data_offset);
+//        read_packet(nullptr, nullptr, nullptr, data_offset);
     }
 
 }
