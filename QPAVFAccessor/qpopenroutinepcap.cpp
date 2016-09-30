@@ -30,3 +30,8 @@ wtap_open_return_val QPOpenRoutinePCAP::openRoutine(QPRFVFAccessor *rfvfAccessor
     return WTAP_OPEN_ERROR;
 }
 
+bool QPOpenRoutinePCAP::readPacket(QPRFVFAccessor *, int *err, char **err_info, qint64 *data_offset)
+{
+
+}
+

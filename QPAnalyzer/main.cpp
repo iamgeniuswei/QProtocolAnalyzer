@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
 
     QPFileAccessor *accessor = new QPFileAccessor;
     qDebug() << accessor->cf_open(info.absoluteFilePath(), 0, 0, nullptr );
+    accessor->cf_read(false);
 
     return a.exec();
 }

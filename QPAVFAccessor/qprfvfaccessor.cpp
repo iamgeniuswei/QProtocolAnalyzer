@@ -3,7 +3,7 @@
 #include "qpopenroutinepcap.h"
 #include "qprfvfdefine.h"
 QPRFVFAccessor::QPRFVFAccessor():
-    reader(nullptr),wth(nullptr)
+    reader(nullptr),wth(nullptr),open(nullptr)
 {
     wth = new (std::nothrow) wtap;
 }
@@ -44,7 +44,7 @@ bool QPRFVFAccessor::openOfflineRF(const QString &filename, unsigned int type, b
 //    }
 
 
-    QPOpenRoutine *open = new QPOpenRoutinePCAP;
+    open = new QPOpenRoutinePCAP;
     int result = 0;
     result = open->openRoutine(this);
     if(result == WTAP_OPEN_MINE)
@@ -90,5 +90,14 @@ bool QPRFVFAccessor::readRawFile(int *err, char **err_info, qint64 *data_offset)
     {
         return false;
     }
+    if(!readPacketByFormat(err, err_info, data_offset))
+    {
+        return false;
+    }
 
+}
+
+bool QPRFVFAccessor::readPacketByFormat(int *err, char **err_info, qint64 *data_offset)
+{
+    return open->readPacket(this, err, err_info, data_offset);
 }

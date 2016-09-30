@@ -8,6 +8,7 @@ class QPOpenRoutinePCAP : public QPOpenRoutine
 public:
     QPOpenRoutinePCAP();
     wtap_open_return_val openRoutine(QPRFVFAccessor *rfvfAccessor);
+    bool readPacket(QPRFVFAccessor *, int *err, char **err_info, qint64 *data_offset);
 
 };
 

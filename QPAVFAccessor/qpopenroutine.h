@@ -10,6 +10,7 @@ class QPOpenRoutine : public QObject
 public:
     explicit QPOpenRoutine(QObject *parent = 0);
     virtual wtap_open_return_val openRoutine(QPRFVFAccessor *) = 0;
+    virtual bool readPacket(QPRFVFAccessor *, int *err, char **err_info, qint64 *data_offset) = 0;
 
     QString getName() const;
     void setName(const QString &value);
