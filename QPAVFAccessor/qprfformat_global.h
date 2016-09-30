@@ -1,0 +1,12 @@
+#ifndef QPRFFORMAT_GLOBAL_H
+#define QPRFFORMAT_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(QPRFFORMAT_LIBRARY)
+#  define QPRFFORMATSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define QPRFFORMATSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // QPRFFORMAT_GLOBAL_H

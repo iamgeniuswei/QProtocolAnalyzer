@@ -1,4 +1,9 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    QPAnalyzer
+    QPAnalyzer \
+    QPRFAccessor \
+    QPAVFAccessor \
+    QPAUtilization \
+    QPADissector \
+
