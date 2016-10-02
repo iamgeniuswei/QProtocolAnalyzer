@@ -17,7 +17,8 @@ SOURCES += \
     qpopenroutinepcap.cpp \
     wtap.cpp \
     qpavfmediator.cpp \
-    qparawfilereader.cpp
+    qparawfilereader.cpp \
+    wtap_pkthdr.cpp
 
 HEADERS +=\
         qprfformat_global.h \

@@ -12,8 +12,7 @@ TEMPLATE = lib
 DEFINES += QPRFACCESSOR_LIBRARY
 
 SOURCES += qprfaccessor.cpp \
-    qpfileaccessor.cpp \
-    wtap_pkthdr.cpp
+    qpfileaccessor.cpp
 
 HEADERS += qprfaccessor.h\
         qprfaccessor_global.h \

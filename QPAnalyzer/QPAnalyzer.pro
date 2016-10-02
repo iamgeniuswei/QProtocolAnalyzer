@@ -48,3 +48,10 @@ else:unix: LIBS += -L$$OUT_PWD/../QPAFileAccessor/ -lQPAFileAccessor
 
 INCLUDEPATH += $$PWD/../QPAFileAccessor
 DEPENDPATH += $$PWD/../QPAFileAccessor
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../QPAMemeory/release/ -lQPAMemeory
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../QPAMemeory/debug/ -lQPAMemeory
+else:unix: LIBS += -L$$OUT_PWD/../QPAMemeory/ -lQPAMemeory
+
+INCLUDEPATH += $$PWD/../QPAMemeory
+DEPENDPATH += $$PWD/../QPAMemeory
