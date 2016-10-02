@@ -6,23 +6,21 @@
 
 QT       -= gui
 
-TARGET = QPAVFAccessor
+TARGET = QPAVariableFormat
 TEMPLATE = lib
 
 DEFINES += QPRFFORMAT_LIBRARY
 
 SOURCES += \
-    qprfreader.cpp \
-    qprfvfaccessor.cpp \
     qpopenroutinesfactory.cpp \
     qpopenroutine.cpp \
     qpopenroutinepcap.cpp \
-    wtap.cpp
+    wtap.cpp \
+    qpavfmediator.cpp \
+    qparawfilereader.cpp
 
 HEADERS +=\
         qprfformat_global.h \
-    qprfreader.h \
-    qprfvfaccessor.h \
     qpopenroutinesfactory.h \
     qpopenroutine.h \
     qpopenroutinepcap.h \
@@ -31,7 +29,9 @@ HEADERS +=\
     wtap_pkthdr.h \
     qprfvfdefine.h \
     wtap.h \
-    teststruct1.h
+    teststruct1.h \
+    qpavfmediator.h \
+    qparawfilereader.h
 
 unix {
     target.path = /usr/lib

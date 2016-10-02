@@ -8,12 +8,12 @@ using namespace std;
  * file_wrappers.h/.c
  */
 class QFileInfo;
-class QPRFVFAccessor;
-class QPRFReader
+class QPAVFMediator;
+class QPARawFileReader
 {
 public:
-    QPRFReader();
-    ~QPRFReader();
+    QPARawFileReader();
+    ~QPARawFileReader();
     bool openRawFile(const QString &filename);
     quint32 readBytesToBuffer(void *buf, quint32 bytes);
 
@@ -25,7 +25,7 @@ private:
     qint64 rfSize;
     fstream fd;
     qint64 rawPos;
-    friend class QPRFVFAccessor;
+    friend class QPAVFMediator;
 };
 
 #endif // QPRFREADER_H

@@ -1,18 +1,18 @@
-#include "qprfreader.h"
+#include "qparawfilereader.h"
 #include <QFileInfo>
 #include <QDebug>
 
-QPRFReader::QPRFReader():rfSize(0)
+QPARawFileReader::QPARawFileReader():rfSize(0)
 {
 
 }
 
-QPRFReader::~QPRFReader()
+QPARawFileReader::~QPARawFileReader()
 {
 
 }
 
-bool QPRFReader::openRawFile(const QString &filename)
+bool QPARawFileReader::openRawFile(const QString &filename)
 {
     rfInfo = new QFileInfo;
     if(nullptr != rfInfo)
@@ -35,7 +35,7 @@ bool QPRFReader::openRawFile(const QString &filename)
     return false;
 }
 
-quint32 QPRFReader::readBytesToBuffer(void *buf, quint32 bytes)
+quint32 QPARawFileReader::readBytesToBuffer(void *buf, quint32 bytes)
 {
     if((rawPos + bytes) >  rfSize)
         return 0;
@@ -50,7 +50,7 @@ quint32 QPRFReader::readBytesToBuffer(void *buf, quint32 bytes)
     return 0;
 }
 
-qint64 QPRFReader::getRawPos() const
+qint64 QPARawFileReader::getRawPos() const
 {
     return rawPos;
 }

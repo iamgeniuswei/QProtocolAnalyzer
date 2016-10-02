@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     qDebug() << "-------------------QProtocolAnalyzer Build 0.01-----------------";
 
     QFileInfo info;
-    info.setFile("/home/lenovo/Documents/test.pcap");
+    info.setFile("/home/lenovo/Documents/test1.pcap");
     qDebug() << info.completeSuffix();
     qDebug() << info.absoluteFilePath();
 

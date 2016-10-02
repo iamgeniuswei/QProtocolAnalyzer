@@ -1,8 +1,9 @@
 #include "qpopenroutinepcap.h"
-#include "qprfvfaccessor.h"
+#include "qpavfmediator.h"
 #include "qpdefinepcap.h"
 #include <QDebug>
-#include "qprfreader.h"
+#include "qparawfilereader.h"
+#include "qprfvfdefine.h"
 
 QPOpenRoutinePCAP::QPOpenRoutinePCAP()
 {
@@ -11,7 +12,7 @@ QPOpenRoutinePCAP::QPOpenRoutinePCAP()
     setExtensions("pcap");
 }
 
-wtap_open_return_val QPOpenRoutinePCAP::openRoutine(QPRFVFAccessor *rfvfAccessor)
+wtap_open_return_val QPOpenRoutinePCAP::openRoutine(QPAVFMediator *rfvfAccessor)
 {
     if(nullptr == rfvfAccessor)
         return WTAP_OPEN_ERROR;
@@ -36,13 +37,15 @@ wtap_open_return_val QPOpenRoutinePCAP::openRoutine(QPRFVFAccessor *rfvfAccessor
     return WTAP_OPEN_MINE;
 }
 
-bool QPOpenRoutinePCAP::readPacket(QPRFVFAccessor *wth, int *err, char **err_info, qint64 *data_offset)
+bool QPOpenRoutinePCAP::readPacket(QPAVFMediator *wth, int *err, char **err_info, qint64 *data_offset)
 {
-    *data_offset = wth->getReader()->getRawPos();
+    if(nullptr == wth)
+        return false;
+    *data_offset = wth->curSeekPos();
     return readPacketData(wth);
 }
 
-bool QPOpenRoutinePCAP::readPacketData(QPRFVFAccessor *wth)
+bool QPOpenRoutinePCAP::readPacketData(QPAVFMediator *wth)
 {
     struct pcaprec_ss990915_hdr hdr;
     quint32 packet_size;
@@ -50,26 +53,28 @@ bool QPOpenRoutinePCAP::readPacketData(QPRFVFAccessor *wth)
     int phdr_len = 0;
     libpcap_t *libpcap;
 
-    if(!readPcapPacketHeader(wth, &hdr))
+    if(!libpcapReadHeader(wth, &hdr))
         return false;
 
     packet_size = hdr.hdr.incl_len;
     orig_size = hdr.hdr.orig_len;
+//    ws_buffer_assure_space(wth->getWth()->frame_buffer, packet_size);
 
-    if(!wth->wtapReadBytes(wth->getWth()->frame_buffer, packet_size))
+    if(!wth->wtapReadPacketBytes(wth->getFrame_buffer(), packet_size))
         return false;
+    return true;
 
 
 }
 
-bool QPOpenRoutinePCAP::readPcapPacketHeader(QPRFVFAccessor *wth, pcaprec_ss990915_hdr *hdr)
+bool QPOpenRoutinePCAP::libpcapReadHeader(QPAVFMediator *wth, pcaprec_ss990915_hdr *hdr)
 {
     int bytes_to_read;
     guint32 temp;
     libpcap_t *libpcap;
     bytes_to_read = sizeof(pcaprec_hdr);
 
-//    switch (wth->fileTypeSubtype()) {
+//    switch (wth->getRawFileSubType()) {
 
 //    case WTAP_FILE_TYPE_SUBTYPE_PCAP:
 //    case WTAP_FILE_TYPE_SUBTYPE_PCAP_AIX:

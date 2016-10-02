@@ -30,8 +30,11 @@ struct wtap_pkthdr {
 //    union wtap_pseudo_header  pseudo_header;
 };
 
-QPRFFORMATSHARED_EXPORT
+extern
 void wtap_phdr_init(wtap_pkthdr *phdr);
+/*** clean up a wtap_pkthdr structure, freeing what wtap_phdr_init() allocated */
+extern
+void wtap_phdr_cleanup(struct wtap_pkthdr *phdr);
 
 
 #endif // WTAP_PKTHDR_H

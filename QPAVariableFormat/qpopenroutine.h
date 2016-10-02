@@ -3,14 +3,14 @@
 
 #include <QObject>
 #include "qprfvfstat.h"
-class QPRFVFAccessor;
+class QPAVFMediator;
 class QPOpenRoutine : public QObject
 {
     Q_OBJECT
 public:
     explicit QPOpenRoutine(QObject *parent = 0);
-    virtual wtap_open_return_val openRoutine(QPRFVFAccessor *) = 0;
-    virtual bool readPacket(QPRFVFAccessor *, int *err, char **err_info, qint64 *data_offset) = 0;
+    virtual wtap_open_return_val openRoutine(QPAVFMediator *) = 0;
+    virtual bool readPacket(QPAVFMediator *, int *err, char **err_info, qint64 *data_offset) = 0;
 
     QString getName() const;
     void setName(const QString &value);

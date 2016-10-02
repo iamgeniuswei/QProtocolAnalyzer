@@ -1,12 +1,13 @@
 #include "qpfileaccessor.h"
-#include "qprfvfaccessor.h"
+#include "qpavfmediator.h"
 #include "wtap_pkthdr.h"
 #include "qprfvfdefine.h"
-#include "qprfreader.h"
+#include "qparawfilereader.h"
 #include <QDebug>
 #include "wtap.h"
 #include "frame_data.h"
 #include "frame_data_sequence.h"
+#include <iostream>
 void QPFileAccessor::cf_init()
 {
     cf = new (std::nothrow) capture_file;
@@ -87,11 +88,11 @@ cf_status_t QPFileAccessor::cf_open(/*capture_file *cf, */const QString &fname, 
 {
     if(nullptr == rfvfAccessor)
     {
-        rfvfAccessor = new (std::nothrow) QPRFVFAccessor;
+        rfvfAccessor = new (std::nothrow) QPAVFMediator;
         if(nullptr == rfvfAccessor)
             return CF_ERROR;
     }
-    if(!rfvfAccessor->openOfflineRF(fname, type, true))
+    if(!rfvfAccessor->openOfflineRawFile(fname, type, true))
         return CF_ERROR;
 
     cf_init();
@@ -122,11 +123,12 @@ cf_read_status_t QPFileAccessor::cf_read(gboolean from_save)
         return CF_READ_ERROR;
     qint64 data_offset = 0;
     int count = 0;
-    qint64 size = rfvfAccessor->getSize();
+    qint64 size = rfvfAccessor->size();
     while (rfvfAccessor->readRawFile(nullptr, nullptr, &data_offset))
     {
         //FIXME:
-        qDebug() << count++;
+        count++;
+        std::cout << count << std::endl;
         qDebug() << rfvfAccessor->getReader()->getRawPos();
 //        read_packet(nullptr, nullptr, nullptr, data_offset);
     }

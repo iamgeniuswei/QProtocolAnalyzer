@@ -2,8 +2,9 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     QPAnalyzer \
-    QPRFAccessor \
-    QPAVFAccessor \
+    QPAFileAccessor \
+    QPAVariableFormat \
     QPAUtilization \
     QPADissector \
+    QPAMemeory
 

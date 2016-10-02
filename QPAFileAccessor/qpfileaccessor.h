@@ -5,7 +5,7 @@
 #include "qpfilestat.h"
 #include "teststruct.h"
 
-class QPRFVFAccessor;
+class QPAVFMediator;
 
 
 class QPFileAccessor
@@ -584,6 +584,6 @@ public:
     #endif
 
 private:
-    QPRFVFAccessor *rfvfAccessor;
+    QPAVFMediator *rfvfAccessor;
 };
 #endif // QPFILEREADER_H
