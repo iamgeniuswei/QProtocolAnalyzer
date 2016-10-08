@@ -10,6 +10,7 @@
  * this class encapsulate struct wtap
  * QPRFVFAccessor: QP Raw File Variable Formats Accessor.
  */
+struct wtap;
 class QPARawFileReader;
 class QPOpenRoutine;
 class QPRFFORMATSHARED_EXPORT QPAVFMediator

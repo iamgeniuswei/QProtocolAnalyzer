@@ -13,12 +13,14 @@ DEFINES += QPAUTILIZATION_LIBRARY
 
 SOURCES += qpautilization.cpp \
     buffer.cpp \
-    nstime.cpp
+    nstime.cpp \
+    ws_mempbrk.cpp
 
 HEADERS += qpautilization.h\
         qpautilization_global.h \
     buffer.h \
-    nstime.h
+    nstime.h \
+    ws_mempbrk.h
 
 unix {
     target.path = /usr/lib

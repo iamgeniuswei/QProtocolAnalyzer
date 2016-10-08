@@ -1,4 +1,5 @@
 #include "wtap.h"
+#include "qpavfmediator.h"
 
 struct wtap_pkthdr *
 wtap_phdr(wtap *wth)
@@ -7,7 +8,7 @@ wtap_phdr(wtap *wth)
 }
 
 guint8 *
-wtap_buf_ptr(wtap *wth)
+wtap_buf_ptr(QPAVFMediator *wth)
 {
-    return ws_buffer_start_ptr(wth->frame_buffer);
+    return ws_buffer_start_ptr(wth->getFrame_buffer());
 }

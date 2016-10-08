@@ -5,6 +5,8 @@
 #include "wtap.h"
 #include "frame_data.h"
 #include "frame_data_sequence.h"
+#include "column-info.h"
+#include "epan_dissect.h"
 /* Current state of file. */
 typedef enum {
   FILE_CLOSED,                  /* No file open */

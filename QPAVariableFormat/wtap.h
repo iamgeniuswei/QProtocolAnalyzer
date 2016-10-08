@@ -3,6 +3,7 @@
 #include <glib.h>
 #include "teststruct1.h"
 #include "wtap_pkthdr.h"
+class QPAVFMediator;
 typedef gboolean (*subtype_read_func)(struct wtap*, int*, char**, gint64*);
 typedef gboolean (*subtype_seek_read_func)(struct wtap*, gint64,
                                            struct wtap_pkthdr *, Buffer *buf,
@@ -137,7 +138,7 @@ wtap_phdr(wtap *wth);
 
 extern
 guint8 *
-wtap_buf_ptr(wtap *wth);
+wtap_buf_ptr(QPAVFMediator *wth);
 
 
 

@@ -12,6 +12,10 @@
 #include "wmem_allocator_simple.h"
 #include "wmem_allocator_strict.h"
 
+#include "packet-frame.h"
+
+#include "proto.h"
+#include "packet.h"
 #define STRING_80               "12345678901234567890123456789012345678901234567890123456789012345678901234567890"
 #define MAX_ALLOC_SIZE          (1024*64)
 #define MAX_SIMULTANEOUS_ALLOCS  1024
@@ -961,50 +965,118 @@ wmem_test_tree(void)
     wmem_destroy_allocator(allocator);
 }
 
+typedef enum {
+  RA_NONE,              /* for initialization */
+  RA_DISSECTORS,        /* Initializing dissectors */
+  RA_LISTENERS,         /* Tap listeners */
+  RA_REGISTER,          /* register */
+  RA_PLUGIN_REGISTER,   /* plugin register */
+  RA_HANDOFF,           /* handoff */
+  RA_PLUGIN_HANDOFF,    /* plugin handoff */
+  RA_LUA_PLUGINS,       /* lua plugin register */
+  RA_LUA_DEREGISTER,    /* lua plugin deregister */
+  RA_PREFERENCES,       /* module preferences */
+  RA_CONFIGURATION      /* configuration files */
+} register_action_e;
+typedef void (*register_cb)(register_action_e action, const char *message, gpointer client_data);
+
+void update(register_action_e action, const char *message, void *)
+{
+    qDebug() << action <<"--" <<  message;
+}
 
 
+void register_all_protocols(register_cb cb, gpointer client_data)
+{
+    if(cb)
+        (*cb)(RA_REGISTER, "proto_register_1722", client_data);
+    if(cb)
+        (*cb)(RA_REGISTER, "proto_register_1723", client_data);
+    if(cb)
+        (*cb)(RA_REGISTER, "proto_register_1723", client_data);
+    if(cb)
+        (*cb)(RA_REGISTER, "proto_register_frame", client_data);
+    proto_register_frame();
+//    proto_register_eth();
+
+
+}
 
 
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
+
+    static gint ett_frame = -1;
+    static gint ett_flags = -1;
+    static gint ett_comments = -1;
+
+    static gint *ett[] = {
+        &ett_frame,\
+        &ett_flags,\
+        &ett_comments
+    };
+
+    qDebug() << ett;
+    qDebug() << *ett;
+    qDebug() << *ett[0];
+    qDebug() << ett[0];
+    qDebug() << ett[1];
+
+    qDebug() << *ett[1];
+    qDebug() << *ett[2];
+    qDebug() << &ett_frame;
+    qDebug() << &ett_flags;
+    qDebug() << &ett_comments;
+
+
+
     qDebug() << "-------------------QProtocolAnalyzer Build 0.01-----------------";
-    int ret;
 
-    wmem_init();
+    proto_init();
+    packet_init();
 
-    g_test_init(&argc, &argv, NULL);
 
-    g_test_add_func("/wmem/allocator/block",     wmem_test_allocator_block);
-    g_test_add_func("/wmem/allocator/blk_fast",  wmem_test_allocator_block_fast);
-    g_test_add_func("/wmem/allocator/simple",    wmem_test_allocator_simple);
-    g_test_add_func("/wmem/allocator/strict",    wmem_test_allocator_strict);
-    g_test_add_func("/wmem/allocator/callbacks", wmem_test_allocator_callbacks);
+    register_all_protocols(update, NULL);
+    packet_cache_proto_handles();
 
-    g_test_add_func("/wmem/utils/misc",    wmem_test_miscutls);
-    g_test_add_func("/wmem/utils/strings", wmem_test_strutls);
 
-    g_test_add_func("/wmem/datastruct/array",  wmem_test_array);
-    g_test_add_func("/wmem/datastruct/list",   wmem_test_list);
-    g_test_add_func("/wmem/datastruct/map",    wmem_test_map);
-    g_test_add_func("/wmem/datastruct/queue",  wmem_test_queue);
-    g_test_add_func("/wmem/datastruct/stack",  wmem_test_stack);
-    g_test_add_func("/wmem/datastruct/strbuf", wmem_test_strbuf);
-    g_test_add_func("/wmem/datastruct/tree",   wmem_test_tree);
+//    int ret;
 
-    ret = g_test_run();
+//    wmem_init();
 
-    wmem_cleanup();
+//    g_test_init(&argc, &argv, NULL);
 
-//    QFileInfo info;
-//    info.setFile("/home/lenovo/Documents/test1.pcap");
-//    qDebug() << info.completeSuffix();
-//    qDebug() << info.absoluteFilePath();
+//    g_test_add_func("/wmem/allocator/block",     wmem_test_allocator_block);
+//    g_test_add_func("/wmem/allocator/blk_fast",  wmem_test_allocator_block_fast);
+//    g_test_add_func("/wmem/allocator/simple",    wmem_test_allocator_simple);
+//    g_test_add_func("/wmem/allocator/strict",    wmem_test_allocator_strict);
+//    g_test_add_func("/wmem/allocator/callbacks", wmem_test_allocator_callbacks);
 
-//    QPFileAccessor *accessor = new QPFileAccessor;
-//    qDebug() << accessor->cf_open(info.absoluteFilePath(), 0, 0, nullptr );
-//    accessor->cf_read(false);
+//    g_test_add_func("/wmem/utils/misc",    wmem_test_miscutls);
+//    g_test_add_func("/wmem/utils/strings", wmem_test_strutls);
+
+//    g_test_add_func("/wmem/datastruct/array",  wmem_test_array);
+//    g_test_add_func("/wmem/datastruct/list",   wmem_test_list);
+//    g_test_add_func("/wmem/datastruct/map",    wmem_test_map);
+//    g_test_add_func("/wmem/datastruct/queue",  wmem_test_queue);
+//    g_test_add_func("/wmem/datastruct/stack",  wmem_test_stack);
+//    g_test_add_func("/wmem/datastruct/strbuf", wmem_test_strbuf);
+//    g_test_add_func("/wmem/datastruct/tree",   wmem_test_tree);
+
+//    ret = g_test_run();
+
+//    wmem_cleanup();
+
+    QFileInfo info;
+    info.setFile("/home/lenovo/Documents/test.pcap");
+    qDebug() << info.completeSuffix();
+    qDebug() << info.absoluteFilePath();
+
+    QPFileAccessor *accessor = new QPFileAccessor;
+    qDebug() << accessor->cf_open(info.absoluteFilePath(), 0, 0, nullptr );
+    accessor->cf_read(false);
 
     return a.exec();
 }

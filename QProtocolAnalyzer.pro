@@ -6,5 +6,8 @@ SUBDIRS += \
     QPAVariableFormat \
     QPAUtilization \
     QPADissector \
-    QPAMemeory
+    QPAMemeory \
+    QPAFieldType \
+    QPACore
+#    QPADissectorsUtil
 

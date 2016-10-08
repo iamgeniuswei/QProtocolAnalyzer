@@ -20,9 +20,9 @@ struct print_args_t{
 
 };
 
-struct proto_tree{
+//struct proto_tree{
 
-};
+//};
 
 struct match_data{
 
@@ -43,13 +43,13 @@ struct epan_t{
 
 //};
 
-struct column_info{
+//struct column_info{
 
-};
+//};
 
-struct epan_dissect_t{
+//struct epan_dissect_t{
 
-};
+//};
 
 struct field_info{
 

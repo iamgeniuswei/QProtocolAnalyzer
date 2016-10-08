@@ -1,0 +1,4 @@
+#ifndef FT_STRUCTTEST_H
+#define FT_STRUCTTEST_H
+
+#endif // FT_STRUCTTEST_H

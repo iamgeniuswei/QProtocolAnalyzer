@@ -8,6 +8,9 @@
 #include "frame_data.h"
 #include "frame_data_sequence.h"
 #include <iostream>
+#include "epan_dissect.h"
+#include "packet.h"
+#include "frame_tvbuff.h"
 void QPFileAccessor::cf_init()
 {
     cf = new (std::nothrow) capture_file;
@@ -59,20 +62,35 @@ void QPFileAccessor::cf_init()
 int QPFileAccessor::read_packet(dfilter_t *dfcode, epan_dissect_t *edt, column_info *cinfo, gint64 offset)
 {
     int row = -1;
-    wtap_pkthdr *phdr = wtap_phdr(cf->wth);
-    const guint8 *buf = wtap_buf_ptr(cf->wth);
+    wtap_pkthdr *phdr = wtap_phdr(rfvfAccessor->getWth());
+    const guint8 *buf = wtap_buf_ptr(rfvfAccessor);
     frame_data fdlocal;
     quint32 framenum;
     frame_data *fdata;
     framenum = cf->count + 1;
     frame_data_init(&fdlocal, framenum, phdr, offset, cf->cum_bytes);
     bool passed = true;
-    if(passed)
-    {
-        fdata = frame_data_sequence_add(cf->frames, &fdlocal);
-        cf->count++;
-        cf->f_datalen = offset + fdlocal.cap_len;
+
+
+    dissect_record(nullptr, cf->cd_t, phdr, frame_tvbuff_new(&fdlocal, buf), &fdlocal, NULL);
+
+    if (cf->rfcode) {
+//      epan_dissect_t rf_edt;
+
+//      epan_dissect_init(&rf_edt, cf->epan, TRUE, FALSE);
+//      epan_dissect_prime_dfilter(&rf_edt, cf->rfcode);
+//      epan_dissect_run(&rf_edt, cf->cd_t, phdr, frame_tvbuff_new(&fdlocal, buf), &fdlocal, NULL);
+//      passed = dfilter_apply_edt(cf->rfcode, &rf_edt);
+//      epan_dissect_cleanup(&rf_edt);
     }
+
+
+//    if(passed)
+//    {
+//        fdata = frame_data_sequence_add(cf->frames, &fdlocal);
+//        cf->count++;
+//        cf->f_datalen = offset + fdlocal.cap_len;
+//    }
 
     return row;
 
@@ -130,7 +148,7 @@ cf_read_status_t QPFileAccessor::cf_read(gboolean from_save)
         count++;
         std::cout << count << std::endl;
         qDebug() << rfvfAccessor->getReader()->getRawPos();
-//        read_packet(nullptr, nullptr, nullptr, data_offset);
+        read_packet(nullptr, nullptr, nullptr, data_offset);
     }
 
 }

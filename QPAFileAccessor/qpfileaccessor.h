@@ -4,6 +4,7 @@
 #include "qpfileaccessstat.h"
 #include "qpfilestat.h"
 #include "teststruct.h"
+#include "proto.h"
 
 class QPAVFMediator;
 
