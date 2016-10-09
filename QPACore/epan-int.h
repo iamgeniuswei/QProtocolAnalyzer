@@ -10,4 +10,5 @@ struct epan_session {
     const char *(*get_user_comment)(void *data, const frame_data *fd);
 };
 
+typedef struct epan_session epan_t;
 #endif // EPANINT_H

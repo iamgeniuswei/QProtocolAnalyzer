@@ -1,10 +1,13 @@
-#ifndef QPFILEREADER_H
-#define QPFILEREADER_H
+#ifndef QPAFILEACCESSOR_H
+#define QPAFILEACCESSOR_H
 #include <QObject>
-#include "qpfileaccessstat.h"
-#include "qpfilestat.h"
-#include "teststruct.h"
+#include "qpacapturefile.h"
 #include "proto.h"
+#include "wtap.h"
+
+
+
+
 
 class QPAVFMediator;
 
@@ -12,8 +15,70 @@ class QPAVFMediator;
 class QPFileAccessor
 {
 private:
-    capture_file *cf;
-    void cf_init();
+    std::shared_ptr<epan_t> epan;
+    file_state state  = FILE_CLOSED;
+    std::string filename;
+    std::string source;
+    bool is_tempfile = false;
+    bool unsaved_changes = false;
+    bool stop_flag = false;
+    qint64 f_datalen = 0;
+    qint16 cd_t = 0;
+    quint32 open_type = 0;
+    bool iscompressed = false;
+    qint32 lnk_t = 0;
+    std::vector<std::shared_ptr<void>> linktypes;
+    qint32 count = 0;
+    quint64 packet_comment_count = 0;
+    quint32 displayed_count = 0;
+    quint32 marked_count = 0;
+    quint32 ignored_count = 0;
+    quint32 ref_time_count = 0;
+    bool drops_known = 0;
+    quint32 drops = 0;
+    nstime_t elapsed_time;
+    bool has_snap = false;
+    qint32 snap = WTAP_MAX_PACKET_SIZE;
+    std::shared_ptr<dfilter_t> rfcode;
+    std::shared_ptr<dfilter_t> dfcode;
+    std::string dfilter;
+    bool redissecting = false;
+    //search
+    std::string sfilter;
+    bool hex = false;
+    bool string = false;
+    bool summary_data = false;
+    bool decode_data = false;
+    bool packet_data = false;
+    quint32 search_pos = 0;
+    bool case_type = false;
+    search_charset_t scs_type = SCS_NARROW_AND_WIDE;
+    search_direction dir = SD_FORWARD;
+    bool search_in_progress;
+    //packet data;
+    std::shared_ptr<wtap_pkthdr> phdr;
+    std::shared_ptr<Buffer> buf;
+    //frames
+    std::shared_ptr<frame_data_sequence> frames;
+    quint32 first_displayed;
+    quint32 last_displayed;
+    column_info cinfo;
+    bool columns_changed;
+    std::shared_ptr<frame_data> current_frame;
+    qint32 current_row;
+    std::shared_ptr<epan_dissect_t> edt;
+    std::shared_ptr<field_info> finfo_selected;
+    //FIXME:
+    void* window;
+    quint32 computed_elapsed;
+    quint32 cum_bytes;
+    std::shared_ptr<const frame_data> ref;
+    std::shared_ptr<frame_data> prev_dis;
+    std::shared_ptr<frame_data> prev_cap;
+
+private:
+    std::shared_ptr<QPAVFMediator> wtap;
+    void cf_init(const QString &_filename, int _open_type, bool _is_tempfile);
     int read_packet(dfilter_t *dfcode, epan_dissect_t *edt,
                     column_info *cinfo, gint64 offset);
 
@@ -21,6 +86,7 @@ private:
 
 public:
     QPFileAccessor();
+    ~QPFileAccessor();
     /**
      * Open a capture file.
      *
@@ -31,7 +97,7 @@ public:
      * @param err error code
      * @return one of cf_status_t
      */
-    cf_status_t cf_open(const QString &fname, unsigned int type, gboolean is_tempfile, int *err);
+    cf_status_t cf_open(const QString &fname, unsigned int type, bool is_tempfile, int *err);
     /**
      * Close a capture file.
      *
@@ -584,7 +650,5 @@ public:
     void cf_set_frame_edited(capture_file *cf, frame_data *fd, struct wtap_pkthdr *phdr, guint8 *pd);
     #endif
 
-private:
-    QPAVFMediator *rfvfAccessor;
 };
-#endif // QPFILEREADER_H
+#endif // QPAFILEACCESSOR_H

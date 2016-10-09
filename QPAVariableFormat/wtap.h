@@ -141,6 +141,6 @@ guint8 *
 wtap_buf_ptr(QPAVFMediator *wth);
 
 
-
+#define WTAP_MAX_PACKET_SIZE    262144
 
 #endif // WTAP_H

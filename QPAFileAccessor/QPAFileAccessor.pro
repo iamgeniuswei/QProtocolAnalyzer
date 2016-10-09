@@ -11,15 +11,13 @@ TEMPLATE = lib
 
 DEFINES += QPRFACCESSOR_LIBRARY
 
-SOURCES += qprfaccessor.cpp \
-    qpfileaccessor.cpp
+SOURCES += \
+    qpafileaccessor.cpp
 
-HEADERS += qprfaccessor.h\
+HEADERS +=\
         qprfaccessor_global.h \
-    teststruct.h \
-    qpfileaccessor.h \
-    qpfileaccessstat.h \
-    qpfilestat.h
+    qpacapturefile.h \
+    qpafileaccessor.h
 
 unix {
     target.path = /usr/lib

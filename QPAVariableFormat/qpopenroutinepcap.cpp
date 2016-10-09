@@ -60,7 +60,7 @@ bool QPOpenRoutinePCAP::readPacketData(QPAVFMediator *wth)
     orig_size = hdr.hdr.orig_len;
 //    ws_buffer_assure_space(wth->getWth()->frame_buffer, packet_size);
 
-    if(!wth->wtapReadPacketBytes(wth->getFrame_buffer(), packet_size))
+    if(!wth->wtapReadPacketBytes(wth->frame_buffer_ptr(), packet_size))
         return false;
     return true;
 

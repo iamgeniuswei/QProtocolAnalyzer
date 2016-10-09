@@ -2,11 +2,9 @@
 #include "qparawfilereader.h"
 #include "qpopenroutinepcap.h"
 #include "qprfvfdefine.h"
-QPAVFMediator::QPAVFMediator():
-    reader(nullptr),wth(nullptr),open(nullptr),\
-    priv(nullptr), wslua_data(nullptr)
+QPAVFMediator::QPAVFMediator()
 {
-    wth = new (std::nothrow) wtap;
+
 }
 
 QPAVFMediator::~QPAVFMediator()
@@ -19,16 +17,13 @@ bool QPAVFMediator::openOfflineRawFile(const QString &filename, unsigned int typ
 {
     if(nullptr == reader)
     {
-        reader = new QPARawFileReader;
+        reader = std::make_shared<QPARawFileReader>();
         //FIXME:
         if(nullptr == reader)
             return false;
         if(!reader->openRawFile(filename))
             return false;
     }
-//    size = reader->rfSize;
-    if(nullptr == wth)
-        return false;
     /* initialization */
     init();
 //    wth->file_encap = WTAP_ENCAP_UNKNOWN;
@@ -52,21 +47,16 @@ bool QPAVFMediator::openOfflineRawFile(const QString &filename, unsigned int typ
 //    }
 
 
-    open = new QPOpenRoutinePCAP;
+    open = make_shared<QPOpenRoutinePCAP>();
     int result = 0;
     result = open->openRoutine(this);
     if(result == WTAP_OPEN_MINE)
     {
-        frame_buffer = (struct Buffer *)g_malloc0(sizeof(struct Buffer));
-        ws_buffer_init(frame_buffer, 1500);
+        frame_buffer = std::make_shared<Buffer>();
+        frame_buffer->ws_buffer_init(1500);
         return true;
     }
     return false;
-
-
-
-
-
 }
 
 quint32 QPAVFMediator:: wtapReadBytes(void *buf, quint32 count)
@@ -97,58 +87,42 @@ bool QPAVFMediator::isCompressed() const
     return false;
 }
 
-QPARawFileReader *QPAVFMediator::getReader() const
+std::shared_ptr<QPARawFileReader> QPAVFMediator::readerPtr() const
 {
     return reader;
 }
 
-wtap *QPAVFMediator::getWth() const
-{
-    return wth;
-}
-
-quint32 QPAVFMediator::getSnapshotLength() const
-{
-    return snapshotLength;
-}
-
-qint32 QPAVFMediator::getRawFileSubType() const
-{
-    return rawFileSubType;
-}
-
-qint32 QPAVFMediator::getRawFileEncapsulation() const
-{
-    return rawFileEncapsulation;
-}
-
-qint32 QPAVFMediator::getRawFileTSPrecision() const
-{
-    return rawFileTSPrecision;
-}
 
 void QPAVFMediator::init()
 {
-    rawFileEncapsulation = WTAP_ENCAP_UNKNOWN;
-    rawFileTSPrecision = WTAP_TSPREC_USEC;
-    interface_data = g_array_new(false, false, sizeof(wtapng_if_descr_t));
+    file_encap = WTAP_ENCAP_UNKNOWN;
+    file_tsprec = WTAP_TSPREC_USEC;
+    phdr = std::make_shared<wtap_pkthdr>();
+
+    //    interface_data = g_array_new(false, false, sizeof(wtapng_if_descr_t));
+
 }
 
-Buffer *QPAVFMediator::getFrame_buffer() const
+std::shared_ptr<Buffer> QPAVFMediator::frame_buffer_ptr() const
 {
     return frame_buffer;
+}
+
+std::shared_ptr<wtap_pkthdr> QPAVFMediator::phdrPtr() const
+{
+    return phdr;
+}
+
+quint8 *QPAVFMediator::wtap_buf_ptr() const
+{
+    return frame_buffer->ws_buffer_start_ptr();
 }
 
 
 bool QPAVFMediator::readRawFile(int *err, char **err_info, qint64 *data_offset)
 {
-    phdr.pkt_encap = rawFileEncapsulation;
-    phdr.pkt_tsprec = rawFileTSPrecision;
-
-    if(wth == nullptr)
-    {
-        return false;
-    }
+    phdr->pkt_encap = file_encap;
+    phdr->pkt_tsprec = file_tsprec;
     if(!readPacketByFormat(err, err_info, data_offset))
     {
         return false;
@@ -177,8 +151,8 @@ void QPAVFMediator::sequentialCloseByFormat()
 
 }
 
-quint32 QPAVFMediator::wtapReadPacketBytes(Buffer *buf, quint32 count)
+quint32 QPAVFMediator::wtapReadPacketBytes(std::shared_ptr<Buffer> buf, quint32 count)
 {
-    ws_buffer_assure_space(buf, count);
-    return wtapReadBytes(buf->data, count);
+    buf->ws_buffer_assure_space(count);
+    return wtapReadBytes(buf->dataPtr(), count);
 }

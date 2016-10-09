@@ -17,11 +17,11 @@ typedef struct frame_data_s
 
 
 extern
-void dissect_record(epan_dissect *edt,\
-                    int file_type_subtype,\
-                    wtap_pkthdr *phdr,\
-                    tvbuff_t *tvb,\
-                    frame_data *fd,\
+void dissect_record(epan_dissect *edt, \
+                    int file_type_subtype, \
+                    std::shared_ptr<wtap_pkthdr> phdr, \
+                    tvbuff_t *tvb, \
+                    std::shared_ptr<frame_data> fd, \
                     column_info *cinfo);
 
 

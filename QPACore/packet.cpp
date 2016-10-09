@@ -48,34 +48,35 @@ struct dissector_table {
  */
 //static GHashTable *registered_dissectors = NULL;
 
-void dissect_record(epan_dissect *edt, int file_type_subtype, wtap_pkthdr *phdr, tvbuff_t *tvb, frame_data *fd, column_info *cinfo)
+void dissect_record(epan_dissect *edt, int file_type_subtype, std::shared_ptr<wtap_pkthdr> phdr, tvbuff_t *tvb, std::shared_ptr<frame_data> fd, column_info *cinfo)
 {
     const char *volatile record_type;
     frame_data_t frame_dissector_data;
-    switch (phdr->rec_type) {
+    record_type = "Frame";
+//    switch (phdr->rec_type) {
 
-    case REC_TYPE_PACKET:
-        record_type = "Frame";
-        break;
+//    case REC_TYPE_PACKET:
+//        record_type = "Frame";
+//        break;
 
-    case REC_TYPE_FT_SPECIFIC_EVENT:
-        record_type = "Event";
-        break;
+//    case REC_TYPE_FT_SPECIFIC_EVENT:
+//        record_type = "Event";
+//        break;
 
-    case REC_TYPE_FT_SPECIFIC_REPORT:
-        record_type = "Report";
-        break;
+//    case REC_TYPE_FT_SPECIFIC_REPORT:
+//        record_type = "Report";
+//        break;
 
-    default:
-        /*
-         * XXX - if we add record types that shouldn't be
-         * dissected and displayed, but that need to at
-         * least be processed somewhere, we need to somehow
-         * indicate that to our caller.
-         */
-        g_assert_not_reached();
-        break;
-    }
+//    default:
+//        /*
+//         * XXX - if we add record types that shouldn't be
+//         * dissected and displayed, but that need to at
+//         * least be processed somewhere, we need to somehow
+//         * indicate that to our caller.
+//         */
+//        g_assert_not_reached();
+//        break;
+//    }
 
 //    edt->pi.epan = edt->session;
     /* edt->pi.pool created in epan_dissect_init() */

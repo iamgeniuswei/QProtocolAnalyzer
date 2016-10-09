@@ -74,7 +74,7 @@ static int dissect_frame(tvbuff_t *tvb, \
                          proto_tree *parent_tree,\
                          void *data)
 {
-    qDebug() << "dissect_frame() is 宗座中";
+    qDebug() << "dissect_frame() is working...";
 }
 
 void proto_register_frame()

@@ -22,7 +22,7 @@ static const struct tvb_ops tvb_frame_ops = {
 //    frame_clone,          /* clone */
 };
 
-tvbuff_t *frame_tvbuff_new(const frame_data *fd, const guint8 *buf)
+tvbuff_t *frame_tvbuff_new(const std::shared_ptr<frame_data> fd, const guint8 *buf)
 {
     struct tvb_frame *frame_tvb;
     tvbuff_t *tvb;
@@ -51,10 +51,10 @@ tvbuff_t *frame_tvbuff_new(const frame_data *fd, const guint8 *buf)
      * tvb_new_real_data() now there's no one
      */
 
-    tvb->real_data       = buf;
-    tvb->length          = fd->cap_len;
-    tvb->reported_length = fd->pkt_len > G_MAXINT ? G_MAXINT : fd->pkt_len;
-    tvb->initialized     = TRUE;
+//    tvb->real_data       = buf;
+//    tvb->length          = fd->cap_len;
+//    tvb->reported_length = fd->pkt_len > G_MAXINT ? G_MAXINT : fd->pkt_len;
+//    tvb->initialized     = TRUE;
 
     /*
      * This is the top-level real tvbuff for this data source,

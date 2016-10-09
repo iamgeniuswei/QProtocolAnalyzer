@@ -1,7 +1,7 @@
 #ifndef QPRFFORMAT_H
 #define QPRFFORMAT_H
-
 #include "qprfformat_global.h"
+#include <memory>
 #include <QPointer>
 #include "wtap.h"
 
@@ -29,7 +29,7 @@ public:
     bool readRawFile(int *err, char **err_info, qint64 *data_offset);
 
 
-    quint32 wtapReadPacketBytes(Buffer *buf, quint32 count);
+    quint32 wtapReadPacketBytes(std::shared_ptr<Buffer> buf, quint32 count);
 
     quint32 wtapReadBytes(void *buf, quint32 count);
 
@@ -37,38 +37,32 @@ public:
     qint64 curSeekPos() const;
     bool isCompressed() const;
 
-    QPARawFileReader *getReader() const;
-
-    wtap *getWth() const;
+    std::shared_ptr<QPARawFileReader> readerPtr() const;
 
 
-    quint32 getSnapshotLength() const;
 
-    qint32 getRawFileSubType() const;
+    std::shared_ptr<Buffer> frame_buffer_ptr() const;
 
-    qint32 getRawFileEncapsulation() const;
-
-    qint32 getRawFileTSPrecision() const;
-
-    Buffer *getFrame_buffer() const;
+public:
+    std::shared_ptr<wtap_pkthdr> phdrPtr() const;
+    quint8* wtap_buf_ptr() const;
 
 private:
     void init();
 
 private:
-    QPARawFileReader *reader;
-    wtap *wth;
-//    qint64 size;
-    QPOpenRoutine *open;
-    quint32 snapshotLength;
-    qint32 rawFileSubType;
-    qint32 rawFileEncapsulation;
-    qint32 rawFileTSPrecision;
-    Buffer *frame_buffer;
-    wtap_pkthdr phdr;
-    void *priv;
-    void *wslua_data;
-    GArray *interface_data;
+    std::shared_ptr<QPARawFileReader> reader;
+    std::shared_ptr<QPOpenRoutine> open;
+    qint32 file_type_subtype;
+    quint32 snapshot_length;
+    std::shared_ptr<Buffer> frame_buffer;
+    std::shared_ptr<wtap_pkthdr> phdr;
+    wtapng_section_s shb_hdr;
+    std::vector<std::shared_ptr<void>> interface_data;
+    std::shared_ptr<wtapng_name_res_t> nrb_hdr;
+    std::shared_ptr<void> priv;
+    std::shared_ptr<void> wslua_data;
+    qint32 file_encap;
+    qint32 file_tsprec;
 };
-
 #endif // QPRFFORMAT_H
