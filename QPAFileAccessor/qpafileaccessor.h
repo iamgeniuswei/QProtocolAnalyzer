@@ -36,7 +36,7 @@ private:
     quint32 ref_time_count = 0;
     bool drops_known = 0;
     quint32 drops = 0;
-    nstime_t elapsed_time;
+    std::shared_ptr<nstime_t> elapsed_time;
     bool has_snap = false;
     qint32 snap = WTAP_MAX_PACKET_SIZE;
     std::shared_ptr<dfilter_t> rfcode;

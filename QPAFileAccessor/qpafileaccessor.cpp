@@ -38,6 +38,7 @@ void QPFileAccessor::cf_init(const QString& _filename, int _open_type, bool _is_
         has_snap = true;
     }
     frames = std::make_shared<frame_data_sequence>();
+    elapsed_time = std::make_shared<nstime_t>();
 }
 
 int QPFileAccessor::read_packet(dfilter_t *dfcode, epan_dissect_t *edt, column_info *cinfo, gint64 offset)

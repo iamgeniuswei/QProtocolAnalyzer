@@ -7,27 +7,47 @@
  */
 
 /** data structure to hold time values with nanosecond resolution*/
-typedef struct nstime_t {
-    time_t	secs;
-    int	nsecs;
-} nstime_t;
+class nstime_t{
+public:
+    nstime_t() = default;
+    nstime_t(const nstime_t &ns)
+    {
+        secs = ns.secs;
+        nsecs = ns.nsecs;
+    }
+    bool nstime_is_zero() const;
+    void nstime_set_unset();
+    bool nstime_is_unset() const;
+    nstime_t& nstime_delta(const nstime_t &b, const nstime_t &a);
+    nstime_t& nstime_sum(const nstime_t &b, const nstime_t &a);
+    int nstime_cmp(const nstime_t &a);
+
+    time_t g_secs() const
+    {
+        return secs;
+    }
+    int g_nsecs() const
+    {
+        return nsecs;
+    }
+    void s_secs(const time_t value)
+    {
+        secs = value;
+    }
+
+    void s_nsecs(const int value)
+    {
+        nsecs = value;
+    }
+
+
+private:
+    time_t secs = 0;
+    int nsecs = 0;
+};
+
 
 /* functions */
-
-/** set the given nstime_t to zero */
-QPAUTILIZATIONSHARED_EXPORT void nstime_set_zero(nstime_t *nstime);
-
-/** is the given nstime_t currently zero? */
-QPAUTILIZATIONSHARED_EXPORT gboolean nstime_is_zero(nstime_t *nstime);
-
-/** set the given nstime_t to (0,maxint) to mark it as "unset"
- * That way we can find the first frame even when a timestamp
- * is zero (fix for bug 1056)
- */
-QPAUTILIZATIONSHARED_EXPORT void nstime_set_unset(nstime_t *nstime);
-
-/* is the given nstime_t currently (0,maxint)? */
-QPAUTILIZATIONSHARED_EXPORT gboolean nstime_is_unset(const nstime_t *nstime);
 
 /** duplicate the current time
  *
