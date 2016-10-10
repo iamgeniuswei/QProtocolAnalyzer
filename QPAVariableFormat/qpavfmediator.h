@@ -15,7 +15,7 @@ class QPARawFileReader;
 class QPOpenRoutine;
 class QPRFFORMATSHARED_EXPORT QPAVFMediator
 {
-
+    friend class QPFileAccessor;
 public:
     QPAVFMediator();
     ~QPAVFMediator();

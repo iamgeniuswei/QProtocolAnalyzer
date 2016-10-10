@@ -14,21 +14,37 @@
 void QPFileAccessor::cf_init(const QString& _filename, int _open_type, bool _is_tempfile)
 {
     phdr = std::make_shared<wtap_pkthdr>();
-    phdr->ft_specific_data.ws_buffer_init(0);
+    if(phdr)
+        phdr->ft_specific_data.ws_buffer_init(0);
     buf = std::make_shared<Buffer>();
-    buf->ws_buffer_init(1500);
+    if(buf)
+        buf->ws_buffer_init(1500);
     state = FILE_READ_IN_PROGRESS;
     f_datalen = 0;
     filename = _filename.toStdString();
     is_tempfile = _is_tempfile;
     open_type = _open_type;
+    if(wth)
+    {
+        cd_t = wth->file_type_subtype;
+        snap = wth->snapshot_length;
+    }
+    if(0 == snap)
+    {
+        has_snap = false;
+        snap = WTAP_MAX_PACKET_SIZE;
+    }
+    else {
+        has_snap = true;
+    }
+    frames = std::make_shared<frame_data_sequence>();
 }
 
 int QPFileAccessor::read_packet(dfilter_t *dfcode, epan_dissect_t *edt, column_info *cinfo, gint64 offset)
 {
     int row = -1;
-    std:shared_ptr<wtap_pkthdr> phdr = wtap->phdrPtr();
-    const guint8 *buf = wtap->wtap_buf_ptr();
+    std:shared_ptr<wtap_pkthdr> phdr = wth->phdrPtr();
+    const guint8 *buf = wth->wtap_buf_ptr();
     std::shared_ptr<frame_data> fdlocal = std::make_shared<frame_data>();
     quint32 framenum = count + 1;
     fdlocal->frame_data_init(framenum, phdr, offset, cum_bytes);
@@ -70,13 +86,13 @@ QPFileAccessor::~QPFileAccessor()
 
 cf_status_t QPFileAccessor::cf_open(const QString &fname, unsigned int type, bool is_tempfile, int *err)
 {
-    if(nullptr == wtap)
+    if(nullptr == wth)
     {
-        wtap = std::make_shared<QPAVFMediator>();
-        if(nullptr == wtap)
+        wth = std::make_shared<QPAVFMediator>();
+        if(nullptr == wth)
             return CF_ERROR;
     }
-    if(!wtap->openOfflineRawFile(fname, type, true))
+    if(!wth->openOfflineRawFile(fname, type, true))
         return CF_ERROR;
 
     cf_init(fname, type, is_tempfile);
@@ -101,17 +117,17 @@ cf_status_t QPFileAccessor::cf_open(const QString &fname, unsigned int type, boo
 
 cf_read_status_t QPFileAccessor::cf_read(gboolean from_save)
 {
-    if(nullptr == wtap)
+    if(nullptr == wth)
         return CF_READ_ERROR;
     qint64 data_offset = 0;
     int count = 0;
-    qint64 size = wtap->size();
-    while (wtap->readRawFile(nullptr, nullptr, &data_offset))
+    qint64 size = wth->size();
+    while (wth->readRawFile(nullptr, nullptr, &data_offset))
     {
         //FIXME:
         count++;
         std::cout << count << std::endl;
-        qDebug() << wtap->readerPtr()->getRawPos();
+        qDebug() << wth->readerPtr()->getRawPos();
         read_packet(nullptr, nullptr, nullptr, data_offset);
     }
 

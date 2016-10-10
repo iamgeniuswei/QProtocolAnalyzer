@@ -77,7 +77,7 @@ private:
     std::shared_ptr<frame_data> prev_cap;
 
 private:
-    std::shared_ptr<QPAVFMediator> wtap;
+    std::shared_ptr<QPAVFMediator> wth;
     void cf_init(const QString &_filename, int _open_type, bool _is_tempfile);
     int read_packet(dfilter_t *dfcode, epan_dissect_t *edt,
                     column_info *cinfo, gint64 offset);

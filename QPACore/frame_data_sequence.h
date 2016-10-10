@@ -2,6 +2,22 @@
 #define FRAME_DATA_SEQUENCE_H
 #include <glib.h>
 #include "frame_data.h"
+#include <memory>
+
+class frame_data_sequence
+{
+public:
+    frame_data_sequence();
+    ~frame_data_sequence();
+
+private:
+    quint32 count = 0;
+    std::shared_ptr<void> ptree_root;
+};
+
+
+
+
 /*
  * We store the frame_data structures in a radix tree, with 1024
  * elements per level.  The leaf nodes are arrays of 1024 frame_data
@@ -29,10 +45,10 @@
         (((framenum) >> (0*LOG2_NODES_PER_LEVEL)) & (NODES_PER_LEVEL - 1))
 
 
-typedef struct _frame_data_sequence {
-  guint32      count;           /* Total number of frames */
-  void        *ptree_root;      /* Pointer to the root node */
-}frame_data_sequence;
+//typedef struct _frame_data_sequence {
+//  guint32      count;           /* Total number of frames */
+//  void        *ptree_root;      /* Pointer to the root node */
+//}frame_data_sequence;
 
 extern frame_data *frame_data_sequence_add(frame_data_sequence *fds,
     frame_data *fdata);
