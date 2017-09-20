@@ -13,6 +13,7 @@
 
 #include "QPAPacketReader.h"
 #include "QPAFileMediator.h"
+#include "QPAAbstractFile.h"
 #include <iostream>
 QPAPacketReader::QPAPacketReader()
 {
@@ -29,24 +30,32 @@ QPAPacketReader::~QPAPacketReader()
 cf_status_t
 QPAPacketReader::openPacketFile(const std::string& path)
 {
-    if (_fileMediator == nullptr) {
-        _fileMediator = std::make_shared<QPAFileMediator>();
+    if (_abstractFile == nullptr) {
+        _abstractFile = std::make_shared<QPAAbstractFile>();
     }
-    if(!_fileMediator->openFile(path))
+    if(!_abstractFile->openOffline(path, 0,0))
         return CF_ERROR;
+    _metaInfo = std::make_shared<QPAMetaInfo>();
+    _metaInfo->_wth = _abstractFile;
+    _metaInfo->_path = path;
+    _metaInfo->_cd_t = _abstractFile->file_type_subtype();
+    
+    
+    
+    
     return CF_OK;
 }
 
 cf_read_status_t
 QPAPacketReader::readPacket()
 {
-    if(_fileMediator == nullptr)
+    if(_abstractFile == nullptr)
         return CF_READ_ERROR;
     
     size_t offset = 0;
     size_t count = 0;
     
-    while (_fileMediator->readFile(&offset)) 
+    while (_abstractFile->readFile(&offset)) 
     {
         std::cout << ++count << std::endl;
     }

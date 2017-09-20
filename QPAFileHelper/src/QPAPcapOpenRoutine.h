@@ -20,7 +20,7 @@
 class QPAPcapOpenRoutine : public QPAOpenRoutine
 {
 public:
-    QPAPcapOpenRoutine(QPAFileMediator* mediator = nullptr);
+    QPAPcapOpenRoutine(QPAAbstractFile* mediator = nullptr);
     QPAPcapOpenRoutine(const QPAPcapOpenRoutine& orig);
     virtual ~QPAPcapOpenRoutine();
     wtap_open_return_val openRoutine() override;

@@ -35,6 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/QPAAbstractFile.o \
+	${OBJECTDIR}/src/QPAAbstractPacketHeader.o \
 	${OBJECTDIR}/src/QPAFileInfo.o \
 	${OBJECTDIR}/src/QPAFileMediator.o \
 	${OBJECTDIR}/src/QPAFileReader.o \
@@ -67,6 +69,16 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.${CND_DLIB_EXT}: ../
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
+
+${OBJECTDIR}/src/QPAAbstractFile.o: src/QPAAbstractFile.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../QPAUtility/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAAbstractFile.o src/QPAAbstractFile.cpp
+
+${OBJECTDIR}/src/QPAAbstractPacketHeader.o: src/QPAAbstractPacketHeader.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../QPAUtility/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAAbstractPacketHeader.o src/QPAAbstractPacketHeader.cpp
 
 ${OBJECTDIR}/src/QPAFileInfo.o: src/QPAFileInfo.cpp
 	${MKDIR} -p ${OBJECTDIR}/src

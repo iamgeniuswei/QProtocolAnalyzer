@@ -12,8 +12,8 @@
  */
 
 #include "QPAOpenRoutine.h"
-
-QPAOpenRoutine::QPAOpenRoutine(QPAFileMediator* mediator)
+#include "QPAAbstractFile.h"
+QPAOpenRoutine::QPAOpenRoutine(QPAAbstractFile* mediator)
 :_mediator(mediator)
 {
 }

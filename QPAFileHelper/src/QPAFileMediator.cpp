@@ -29,17 +29,17 @@ QPAFileMediator::~QPAFileMediator()
 bool
 QPAFileMediator::openFile(const std::string& path)
 {
-    if(nullptr == _reader)
-    {
-        _reader = std::make_shared<QPAFileReader>();
-        if(!_reader->openFile(path))
-            return false;
-    }
-    _openRoutine = std::make_shared<QPAPcapOpenRoutine>(this);
-    if(_openRoutine->openRoutine() != WTAP_OPEN_MINE)
-        return false;
-    _frameBuffer = std::make_shared<QPABuffer>();
-    _frameBuffer->ws_buffer_init(1500);
+//    if(nullptr == _reader)
+//    {
+//        _reader = std::make_shared<QPAFileReader>();
+//        if(!_reader->openFile(path))
+//            return false;
+//    }
+//    _openRoutine = std::make_shared<QPAPcapOpenRoutine>(this);
+//    if(_openRoutine->openRoutine() != WTAP_OPEN_MINE)
+//        return false;
+//    _frameBuffer = std::make_shared<QPABuffer>();
+//    _frameBuffer->ws_buffer_init(1500);
     return true;
 }
 

@@ -38,5 +38,26 @@ typedef enum {
 } cf_print_status_t;
 
 
+
+/* Current state of file. */
+typedef enum {
+  FILE_CLOSED,                  /* No file open */
+  FILE_READ_IN_PROGRESS,        /* Reading a file we've opened */
+  FILE_READ_ABORTED,            /* Read aborted by user */
+  FILE_READ_DONE                /* Read completed */
+} file_state;
+
+/* Character set for text search. */
+typedef enum {
+  SCS_NARROW_AND_WIDE,
+  SCS_NARROW,
+  SCS_WIDE
+  /* add EBCDIC when it's implemented */
+} search_charset_t;
+typedef enum {
+  SD_FORWARD,
+  SD_BACKWARD
+} search_direction;
+
 #endif /* QPASKELETONDEFINE_H */
 

@@ -143,6 +143,22 @@ cd "${TOP}"
 makeDirectory "${NBTMPDIR}/qprotocolanalyzer/bin"
 copyFileToTmpDir "${OUTPUT_PATH}" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
+cd "${TOP}"
+makeDirectory "${NBTMPDIR}/qprotocolanalyzer/bin"
+copyFileToTmpDir "${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.so" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/libQPAFileHelper.so" 0755
+
+cd "${TOP}"
+makeDirectory "${NBTMPDIR}/qprotocolanalyzer/bin"
+copyFileToTmpDir "${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPASkeleton.so" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/libQPASkeleton.so" 0755
+
+cd "${TOP}"
+makeDirectory "${NBTMPDIR}/qprotocolanalyzer/bin"
+copyFileToTmpDir "${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAUtility.so" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/libQPAUtility.so" 0755
+
+cd "${TOP}"
+makeDirectory "${NBTMPDIR}/qprotocolanalyzer/bin"
+copyFileToTmpDir "${OUTPUT_PATH}" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
+
 
 # Generate tar file
 cd "${TOP}"

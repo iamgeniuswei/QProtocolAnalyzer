@@ -18,8 +18,9 @@
 #include <memory>
 
 #include "QPASkeletonDefine.h"
+#include "QPAMetaInfo.h"
 
-class QPAFileMediator;
+class QPAAbstractFile;
 class QPAPacketReader {
 public:
     QPAPacketReader();
@@ -31,7 +32,8 @@ public:
 protected:
 
 private:
-    std::shared_ptr<QPAFileMediator> _fileMediator = nullptr;
+    std::shared_ptr<QPAAbstractFile> _abstractFile = nullptr;
+    std::shared_ptr<QPAMetaInfo> _metaInfo = nullptr;
 
 };
 

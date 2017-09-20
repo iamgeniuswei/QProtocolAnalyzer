@@ -10,6 +10,8 @@
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects>
                 <make-dep-project>../QPAFileHelper</make-dep-project>
+                <make-dep-project>../QPAUtility</make-dep-project>
+                <make-dep-project>../QPADissector</make-dep-project>
             </make-dep-projects>
             <sourceRootList/>
             <confList>

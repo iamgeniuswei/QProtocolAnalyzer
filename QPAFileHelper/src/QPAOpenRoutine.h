@@ -19,10 +19,10 @@
 #include "QPAFileReader.h"
 //#include "QPAFileMediator.h"
 #include "QPAFileHelperDefine.h"
-class QPAFileMediator;
+class QPAAbstractFile;
 class QPAOpenRoutine {
 public:
-    QPAOpenRoutine(QPAFileMediator* mediator = nullptr);
+    QPAOpenRoutine(QPAAbstractFile* mediator = nullptr);
     QPAOpenRoutine(const QPAOpenRoutine& orig);
     virtual ~QPAOpenRoutine();
     virtual wtap_open_return_val openRoutine() = 0;
@@ -31,7 +31,7 @@ public:
 protected:
 
 protected:
-    QPAFileMediator* _mediator = nullptr;
+    QPAAbstractFile* _mediator = nullptr;
     
 
 };

@@ -35,7 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/QPABuffer.o
+	${OBJECTDIR}/src/QPABuffer.o \
+	${OBJECTDIR}/src/QPAMapManager.o \
+	${OBJECTDIR}/src/QPATimestamp.o
 
 
 # C Compiler Flags
@@ -66,6 +68,16 @@ ${OBJECTDIR}/src/QPABuffer.o: src/QPABuffer.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPABuffer.o src/QPABuffer.cpp
+
+${OBJECTDIR}/src/QPAMapManager.o: src/QPAMapManager.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAMapManager.o src/QPAMapManager.cpp
+
+${OBJECTDIR}/src/QPATimestamp.o: src/QPATimestamp.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPATimestamp.o src/QPATimestamp.cpp
 
 # Subprojects
 .build-subprojects:

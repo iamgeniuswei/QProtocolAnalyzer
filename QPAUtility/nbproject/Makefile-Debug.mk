@@ -35,7 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/QPABuffer.o
+	${OBJECTDIR}/src/QPABuffer.o \
+	${OBJECTDIR}/src/QPAMapManager.o \
+	${OBJECTDIR}/src/QPATimestamp.o
 
 
 # C Compiler Flags
@@ -65,7 +67,17 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAUtility.${CND_DLIB_EXT}: ${OBJE
 ${OBJECTDIR}/src/QPABuffer.o: src/QPABuffer.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPABuffer.o src/QPABuffer.cpp
+	$(COMPILE.cc) -g -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPABuffer.o src/QPABuffer.cpp
+
+${OBJECTDIR}/src/QPAMapManager.o: src/QPAMapManager.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAMapManager.o src/QPAMapManager.cpp
+
+${OBJECTDIR}/src/QPATimestamp.o: src/QPATimestamp.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPATimestamp.o src/QPATimestamp.cpp
 
 # Subprojects
 .build-subprojects:

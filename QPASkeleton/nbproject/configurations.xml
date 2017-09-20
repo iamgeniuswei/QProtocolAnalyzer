@@ -2,10 +2,12 @@
 <configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles" displayName="头文件" projectFiles="true">
+      <itemPath>src/QPAMetaInfo.h</itemPath>
       <itemPath>src/QPAPacketReader.h</itemPath>
       <itemPath>src/QPASkeletonDefine.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
+      <itemPath>src/QPAMetaInfo.cpp</itemPath>
       <itemPath>src/QPAPacketReader.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles" displayName="资源文件" projectFiles="true">
@@ -35,6 +37,8 @@
           <standard>8</standard>
           <incDir>
             <pElem>../QPAFileHelper/src</pElem>
+            <pElem>../QPAUtility/src</pElem>
+            <pElem>../QPADissector/src</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
@@ -51,9 +55,37 @@
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.${CND_DLIB_EXT}">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../QPAUtility"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../QPAUtility"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAUtility.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../QPADissector"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../QPADissector"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPADissector.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="src/QPAMetaInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAMetaInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/QPAPacketReader.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/QPAPacketReader.h" ex="false" tool="3" flavor2="0">
@@ -81,6 +113,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="src/QPAMetaInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAMetaInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/QPAPacketReader.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/QPAPacketReader.h" ex="false" tool="3" flavor2="0">

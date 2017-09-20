@@ -15,8 +15,9 @@
 
 #include "QPAPcapOpenRoutine.h"
 #include "QPAFileMediator.h"
+#include "QPAAbstractFile.h"
 
-QPAPcapOpenRoutine::QPAPcapOpenRoutine(QPAFileMediator* mediator)
+QPAPcapOpenRoutine::QPAPcapOpenRoutine(QPAAbstractFile* mediator)
 :QPAOpenRoutine(mediator)
 {
 }

@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/QPAMetaInfo.o \
 	${OBJECTDIR}/src/QPAPacketReader.o
 
 
@@ -52,7 +53,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-Wl,-rpath,'../QPAFileHelper/dist/Debug/GNU-Linux' -L../QPAFileHelper/dist/Debug/GNU-Linux -lQPAFileHelper
+LDLIBSOPTIONS=-Wl,-rpath,'../QPAFileHelper/dist/Debug/GNU-Linux' -L../QPAFileHelper/dist/Debug/GNU-Linux -lQPAFileHelper -Wl,-rpath,'../QPAUtility/dist/Debug/GNU-Linux' -L../QPAUtility/dist/Debug/GNU-Linux -lQPAUtility -Wl,-rpath,'../QPADissector/dist/Debug/GNU-Linux' -L../QPADissector/dist/Debug/GNU-Linux -lQPADissector
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -60,28 +61,41 @@ LDLIBSOPTIONS=-Wl,-rpath,'../QPAFileHelper/dist/Debug/GNU-Linux' -L../QPAFileHel
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPASkeleton.${CND_DLIB_EXT}: ../QPAFileHelper/dist/Debug/GNU-Linux/libQPAFileHelper.so
 
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPASkeleton.${CND_DLIB_EXT}: ../QPAUtility/dist/Debug/GNU-Linux/libQPAUtility.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPASkeleton.${CND_DLIB_EXT}: ../QPADissector/dist/Debug/GNU-Linux/libQPADissector.so
+
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPASkeleton.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPASkeleton.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
 
+${OBJECTDIR}/src/QPAMetaInfo.o: src/QPAMetaInfo.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../QPAFileHelper/src -I../QPAUtility/src -I../QPADissector/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAMetaInfo.o src/QPAMetaInfo.cpp
+
 ${OBJECTDIR}/src/QPAPacketReader.o: src/QPAPacketReader.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../QPAFileHelper/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAPacketReader.o src/QPAPacketReader.cpp
+	$(COMPILE.cc) -g -I../QPAFileHelper/src -I../QPAUtility/src -I../QPADissector/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAPacketReader.o src/QPAPacketReader.cpp
 
 # Subprojects
 .build-subprojects:
 	cd ../QPAFileHelper && ${MAKE}  -f Makefile CONF=Debug
+	cd ../QPAUtility && ${MAKE}  -f Makefile CONF=Debug
+	cd ../QPADissector && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.so
+	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAUtility.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPADissector.so
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPASkeleton.${CND_DLIB_EXT}
 
 # Subprojects
 .clean-subprojects:
 	cd ../QPAFileHelper && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../QPAUtility && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../QPADissector && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

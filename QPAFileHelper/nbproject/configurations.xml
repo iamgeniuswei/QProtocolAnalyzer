@@ -2,6 +2,8 @@
 <configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles" displayName="头文件" projectFiles="true">
+      <itemPath>src/QPAAbstractFile.h</itemPath>
+      <itemPath>src/QPAAbstractPacketHeader.h</itemPath>
       <itemPath>src/QPAFileHelperDefine.h</itemPath>
       <itemPath>src/QPAFileInfo.h</itemPath>
       <itemPath>src/QPAFileMediator.h</itemPath>
@@ -10,6 +12,8 @@
       <itemPath>src/QPAPcapOpenRoutine.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
+      <itemPath>src/QPAAbstractFile.cpp</itemPath>
+      <itemPath>src/QPAAbstractPacketHeader.cpp</itemPath>
       <itemPath>src/QPAFileInfo.cpp</itemPath>
       <itemPath>src/QPAFileMediator.cpp</itemPath>
       <itemPath>src/QPAFileReader.cpp</itemPath>
@@ -62,6 +66,14 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="src/QPAAbstractFile.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAAbstractFile.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAAbstractPacketHeader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAAbstractPacketHeader.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/QPAFileHelperDefine.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/QPAFileInfo.cpp" ex="false" tool="1" flavor2="0">
@@ -105,6 +117,14 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="src/QPAAbstractFile.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAAbstractFile.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAAbstractPacketHeader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAAbstractPacketHeader.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/QPAFileHelperDefine.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/QPAFileInfo.cpp" ex="false" tool="1" flavor2="0">

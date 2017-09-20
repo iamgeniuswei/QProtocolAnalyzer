@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="f1" displayName="dissectors" projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>src/QPADissectionSession.h</itemPath>
+      <itemPath>src/QPADissector.h</itemPath>
+      <itemPath>src/QPADissectorDefine.h</itemPath>
+      <itemPath>src/QPADissectorHelper.h</itemPath>
+      <itemPath>src/QPAFrameData.h</itemPath>
+      <itemPath>src/QPAProtocol.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>src/QPADissectionSession.cpp</itemPath>
+      <itemPath>src/QPADissector.cpp</itemPath>
+      <itemPath>src/QPADissectorHelper.cpp</itemPath>
+      <itemPath>src/QPAFrameData.cpp</itemPath>
+      <itemPath>src/QPAProtocol.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <incDir>
+            <pElem>../../QProtocolAnalyzer/QPAUtility/src</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../QProtocolAnalyzer/QPAUtility"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../../QProtocolAnalyzer/QPAUtility"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAUtility.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="src/QPADissectionSession.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPADissectionSession.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPADissector.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPADissector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPADissectorDefine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPADissectorHelper.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPADissectorHelper.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAFrameData.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAFrameData.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAProtocol.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAProtocol.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="src/QPADissectionSession.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPADissectionSession.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPADissector.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPADissector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPADissectorDefine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPADissectorHelper.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPADissectorHelper.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAFrameData.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAFrameData.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAProtocol.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAProtocol.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
