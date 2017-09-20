@@ -13,7 +13,8 @@
 
 #include "QPAOpenRoutine.h"
 
-QPAOpenRoutine::QPAOpenRoutine()
+QPAOpenRoutine::QPAOpenRoutine(QPAFileMediator* mediator)
+:_mediator(mediator)
 {
 }
 

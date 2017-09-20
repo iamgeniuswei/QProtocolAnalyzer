@@ -20,15 +20,15 @@
 class QPAPcapOpenRoutine : public QPAOpenRoutine
 {
 public:
-    QPAPcapOpenRoutine();
+    QPAPcapOpenRoutine(QPAFileMediator* mediator = nullptr);
     QPAPcapOpenRoutine(const QPAPcapOpenRoutine& orig);
     virtual ~QPAPcapOpenRoutine();
-    void openRoutine() override;
-
-
+    wtap_open_return_val openRoutine() override;
+    bool readPacket(ssize_t * offset) override;
+    
 
 protected:
-
+    bool libpcapReadHead(pcaprec_hdr* hdr);
 private:
 
 };

@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/QPAFileInfo.o \
+	${OBJECTDIR}/src/QPAFileMediator.o \
 	${OBJECTDIR}/src/QPAFileReader.o \
 	${OBJECTDIR}/src/QPAOpenRoutine.o \
 	${OBJECTDIR}/src/QPAPcapOpenRoutine.o
@@ -69,6 +70,11 @@ ${OBJECTDIR}/src/QPAFileInfo.o: src/QPAFileInfo.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAFileInfo.o src/QPAFileInfo.cpp
+
+${OBJECTDIR}/src/QPAFileMediator.o: src/QPAFileMediator.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAFileMediator.o src/QPAFileMediator.cpp
 
 ${OBJECTDIR}/src/QPAFileReader.o: src/QPAFileReader.cpp
 	${MKDIR} -p ${OBJECTDIR}/src

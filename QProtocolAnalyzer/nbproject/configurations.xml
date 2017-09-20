@@ -33,6 +33,8 @@
           <standard>8</standard>
           <incDir>
             <pElem>../QPAFileHelper/src</pElem>
+            <pElem>../QPASkeleton/src</pElem>
+            <pElem>../QPAUtility/src</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
@@ -50,6 +52,30 @@
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.${CND_DLIB_EXT}">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../QPASkeleton"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../QPASkeleton"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPASkeleton.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../QPAUtility"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../QPAUtility"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAUtility.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -59,6 +85,120 @@
           <packFileListElem type="File"
                             to="${PACKAGE_TOP_DIR}bin/libQPAFileHelper.so"
                             from="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.so"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/libQPAFileHelper.so"
+                            from="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.so"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/libQPASkeleton.so"
+                            from="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPASkeleton.so"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/libQPAFileHelper.so"
+                            from="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.so"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/libQPASkeleton.so"
+                            from="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPASkeleton.so"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/libQPAUtility.so"
+                            from="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAUtility.so"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/libQPAFileHelper.so"
+                            from="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.so"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/libQPASkeleton.so"
+                            from="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPASkeleton.so"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/libQPAUtility.so"
+                            from="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAUtility.so"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/libQPAFileHelper.so"
+                            from="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.so"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/libQPASkeleton.so"
+                            from="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPASkeleton.so"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/libQPAUtility.so"
+                            from="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAUtility.so"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/libQPAFileHelper.so"
+                            from="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.so"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/libQPASkeleton.so"
+                            from="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPASkeleton.so"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/libQPAUtility.so"
+                            from="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAUtility.so"
                             perm="755"
                             owner="root"
                             group="bin"/>

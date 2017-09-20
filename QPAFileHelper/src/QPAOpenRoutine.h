@@ -17,19 +17,22 @@
 #include <memory>
 
 #include "QPAFileReader.h"
-
-
+//#include "QPAFileMediator.h"
+#include "QPAFileHelperDefine.h"
+class QPAFileMediator;
 class QPAOpenRoutine {
 public:
-    QPAOpenRoutine();
+    QPAOpenRoutine(QPAFileMediator* mediator = nullptr);
     QPAOpenRoutine(const QPAOpenRoutine& orig);
     virtual ~QPAOpenRoutine();
-    virtual void openRoutine() = 0;
+    virtual wtap_open_return_val openRoutine() = 0;
+    virtual bool readPacket(ssize_t * offset) = 0;
 
 protected:
 
-private:
-//    std::shared_ptr<QPAFileReader>
+protected:
+    QPAFileMediator* _mediator = nullptr;
+    
 
 };
 

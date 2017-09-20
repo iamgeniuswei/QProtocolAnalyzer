@@ -17,6 +17,7 @@
 using namespace std;
 #include "QPAFileInfo.h"
 #include "QPAFileReader.h"
+#include "QPAPacketReader.h"
 /*
  * 
  */
@@ -28,8 +29,10 @@ int main(int argc, char** argv)
 //    cout << info.setFile("/media/lenovo/10b683ed-ef62-4ea5-ac0b-8cc75ff5f287/lenovo/Downloads") << endl;
 //    cout << info.fileSize() << endl;
 //    cout << info.isFile() << endl;
-    shared_ptr<QPAFileReader> reader = make_shared<QPAFileReader>();
-    cout << reader->openFile("/media/lenovo/10b683ed-ef62-4ea5-ac0b-8cc75ff5f287/lenovo/Downloads/deepin-15.4.1-amd64.iso") << endl;
+    std::string path = "/home/lenovo/PCAP/test2.pcap";
+    shared_ptr<QPAPacketReader> reader = make_shared<QPAPacketReader>();
+    cout << reader->openPacketFile(path) << endl;
+    reader->readPacket();
     return 0;
 }
 

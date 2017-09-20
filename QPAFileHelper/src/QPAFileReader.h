@@ -17,6 +17,7 @@
 #include <string>
 #include <memory>
 #include <fstream>
+#include <bits/c++config.h>
 using namespace std;
 
 #include "QPAFileInfo.h"
@@ -29,6 +30,10 @@ public:
     virtual ~QPAFileReader();
     bool openFile(const std::string& path);
     size_t readToBuffer(void *buf, size_t bytes);
+    size_t position()
+    {
+        return _position;
+    }
     
 
 

@@ -2,13 +2,16 @@
 <configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles" displayName="头文件" projectFiles="true">
+      <itemPath>src/QPAFileHelperDefine.h</itemPath>
       <itemPath>src/QPAFileInfo.h</itemPath>
+      <itemPath>src/QPAFileMediator.h</itemPath>
       <itemPath>src/QPAFileReader.h</itemPath>
       <itemPath>src/QPAOpenRoutine.h</itemPath>
       <itemPath>src/QPAPcapOpenRoutine.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
       <itemPath>src/QPAFileInfo.cpp</itemPath>
+      <itemPath>src/QPAFileMediator.cpp</itemPath>
       <itemPath>src/QPAFileReader.cpp</itemPath>
       <itemPath>src/QPAOpenRoutine.cpp</itemPath>
       <itemPath>src/QPAPcapOpenRoutine.cpp</itemPath>
@@ -38,11 +41,36 @@
       <compileType>
         <ccTool>
           <standard>8</standard>
+          <incDir>
+            <pElem>../QPAUtility/src</pElem>
+          </incDir>
         </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../QPAUtility"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../QPAUtility"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAUtility.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
+      <item path="src/QPAFileHelperDefine.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/QPAFileInfo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/QPAFileInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAFileMediator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAFileMediator.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/QPAFileReader.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -77,9 +105,15 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="src/QPAFileHelperDefine.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/QPAFileInfo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/QPAFileInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAFileMediator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAFileMediator.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/QPAFileReader.cpp" ex="false" tool="1" flavor2="0">
       </item>

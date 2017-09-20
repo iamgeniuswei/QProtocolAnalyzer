@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/QPAFileInfo.o \
+	${OBJECTDIR}/src/QPAFileMediator.o \
 	${OBJECTDIR}/src/QPAFileReader.o \
 	${OBJECTDIR}/src/QPAOpenRoutine.o \
 	${OBJECTDIR}/src/QPAPcapOpenRoutine.o
@@ -55,11 +56,13 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-Wl,-rpath,'../QPAUtility/dist/Debug/GNU-Linux' -L../QPAUtility/dist/Debug/GNU-Linux -lQPAUtility
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.${CND_DLIB_EXT}
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.${CND_DLIB_EXT}: ../QPAUtility/dist/Debug/GNU-Linux/libQPAUtility.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -68,32 +71,41 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.${CND_DLIB_EXT}: ${O
 ${OBJECTDIR}/src/QPAFileInfo.o: src/QPAFileInfo.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAFileInfo.o src/QPAFileInfo.cpp
+	$(COMPILE.cc) -g -I../QPAUtility/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAFileInfo.o src/QPAFileInfo.cpp
+
+${OBJECTDIR}/src/QPAFileMediator.o: src/QPAFileMediator.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../QPAUtility/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAFileMediator.o src/QPAFileMediator.cpp
 
 ${OBJECTDIR}/src/QPAFileReader.o: src/QPAFileReader.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAFileReader.o src/QPAFileReader.cpp
+	$(COMPILE.cc) -g -I../QPAUtility/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAFileReader.o src/QPAFileReader.cpp
 
 ${OBJECTDIR}/src/QPAOpenRoutine.o: src/QPAOpenRoutine.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAOpenRoutine.o src/QPAOpenRoutine.cpp
+	$(COMPILE.cc) -g -I../QPAUtility/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAOpenRoutine.o src/QPAOpenRoutine.cpp
 
 ${OBJECTDIR}/src/QPAPcapOpenRoutine.o: src/QPAPcapOpenRoutine.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAPcapOpenRoutine.o src/QPAPcapOpenRoutine.cpp
+	$(COMPILE.cc) -g -I../QPAUtility/src -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAPcapOpenRoutine.o src/QPAPcapOpenRoutine.cpp
 
 # Subprojects
 .build-subprojects:
+	cd ../QPAUtility && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
+	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAUtility.so
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.${CND_DLIB_EXT}
 
 # Subprojects
 .clean-subprojects:
+	cd ../QPAUtility && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl
