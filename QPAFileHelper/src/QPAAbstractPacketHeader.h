@@ -16,6 +16,15 @@
 #include <string>
 #include <memory>
 #include "QPATimestamp.h"
+
+
+#define REC_TYPE_PACKET               0    /**< packet */
+#define REC_TYPE_FT_SPECIFIC_EVENT    1    /**< file-type-specific event */
+#define REC_TYPE_FT_SPECIFIC_REPORT   2    /**< file-type-specific report */
+
+
+
+
 class QPABuffer;
 class QPAAbstractPacketHeader
 {
@@ -26,6 +35,7 @@ public:
     QPAAbstractPacketHeader& operator=(const QPAAbstractPacketHeader& orig) = delete;
     QPAAbstractPacketHeader& operator=(const QPAAbstractPacketHeader&& orig) = delete;
     virtual ~QPAAbstractPacketHeader();
+    unsigned int rec_type() const;
 
 protected:
 

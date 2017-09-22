@@ -9,6 +9,8 @@
             <header-extensions>h</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects>
+                <make-dep-project>../QPAFileHelper</make-dep-project>
+                <make-dep-project>../QPAFieldType</make-dep-project>
                 <make-dep-project>../../QProtocolAnalyzer/QPAUtility</make-dep-project>
             </make-dep-projects>
             <sourceRootList/>

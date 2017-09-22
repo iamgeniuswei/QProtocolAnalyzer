@@ -21,3 +21,8 @@ QPAAbstractPacketHeader::~QPAAbstractPacketHeader()
 {
 }
 
+unsigned int QPAAbstractPacketHeader::rec_type() const
+{
+    return _rec_type;
+}
+

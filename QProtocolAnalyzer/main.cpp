@@ -18,6 +18,8 @@ using namespace std;
 #include "QPAFileInfo.h"
 #include "QPAFileReader.h"
 #include "QPAPacketReader.h"
+#include "dissectors/packet-frame.h"
+#include "QPAProtocolHelper.h"
 /*
  * 
  */
@@ -25,14 +27,20 @@ int main(int argc, char** argv)
 {
     cout << "-----------------QProtocolAnalyzer Ver 1.00.00-----------------" << endl;
     cout << sizeof(size_t) << endl;
-//    QPAFileInfo info;
-//    cout << info.setFile("/media/lenovo/10b683ed-ef62-4ea5-ac0b-8cc75ff5f287/lenovo/Downloads") << endl;
-//    cout << info.fileSize() << endl;
-//    cout << info.isFile() << endl;
+    proto_register_frame();
+
     std::string path = "/home/lenovo/PCAP/test2.pcap";
     shared_ptr<QPAPacketReader> reader = make_shared<QPAPacketReader>();
     cout << reader->openPacketFile(path) << endl;
     reader->readPacket();
+   
+//    QPAProtocolHelper *helper = new QPAProtocolHelper;
+//    std::string name = "ftp";
+//    cout << helper->wrs_str_hash(name.c_str()) << endl;
+//    cout << helper->wrs_str_hash("smtp") << endl;
+//    cout << helper->wrs_str_hash("pop3") << endl;
+//    cout << helper->wrs_str_hash("ftp") << endl;
+//    cout << helper->wrs_str_hash("qq") << endl;
     return 0;
 }
 

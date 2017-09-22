@@ -21,6 +21,7 @@
 #include "QPAOpenRoutine.h"
 
 #include "QPAFileHelperDefine.h"
+#include "QPAAbstractPacketHeader.h"
 class QPABuffer;
 class QPAAbstractFile
 {
@@ -47,6 +48,8 @@ public:
     {
         return _file_type_subtype;
     }
+    std::shared_ptr<QPAAbstractPacketHeader> phdr();
+    std::shared_ptr<QPABuffer> frameBuffer();
 
 protected:
 
@@ -57,6 +60,7 @@ private:
     std::shared_ptr<QPAFileReader> _reader;
     std::shared_ptr<QPAOpenRoutine> _openRoutine;
     std::shared_ptr<QPABuffer> _frameBuffer;
+    std::shared_ptr<QPAAbstractPacketHeader> _phdr;
 
 
 };

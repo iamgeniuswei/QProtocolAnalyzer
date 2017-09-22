@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/QPABuffer.o \
+	${OBJECTDIR}/src/QPAMapHelper.o \
 	${OBJECTDIR}/src/QPAMapManager.o \
 	${OBJECTDIR}/src/QPATimestamp.o
 
@@ -68,6 +69,11 @@ ${OBJECTDIR}/src/QPABuffer.o: src/QPABuffer.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPABuffer.o src/QPABuffer.cpp
+
+${OBJECTDIR}/src/QPAMapHelper.o: src/QPAMapHelper.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPAMapHelper.o src/QPAMapHelper.cpp
 
 ${OBJECTDIR}/src/QPAMapManager.o: src/QPAMapManager.cpp
 	${MKDIR} -p ${OBJECTDIR}/src

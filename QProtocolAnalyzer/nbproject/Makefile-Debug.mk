@@ -52,7 +52,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-Wl,-rpath,'../QPAFileHelper/dist/Debug/GNU-Linux' -L../QPAFileHelper/dist/Debug/GNU-Linux -lQPAFileHelper -Wl,-rpath,'../QPASkeleton/dist/Debug/GNU-Linux' -L../QPASkeleton/dist/Debug/GNU-Linux -lQPASkeleton -Wl,-rpath,'../QPAUtility/dist/Debug/GNU-Linux' -L../QPAUtility/dist/Debug/GNU-Linux -lQPAUtility
+LDLIBSOPTIONS=-Wl,-rpath,'../QPAFileHelper/dist/Debug/GNU-Linux' -L../QPAFileHelper/dist/Debug/GNU-Linux -lQPAFileHelper -Wl,-rpath,'../QPASkeleton/dist/Debug/GNU-Linux' -L../QPASkeleton/dist/Debug/GNU-Linux -lQPASkeleton -Wl,-rpath,'../QPAUtility/dist/Debug/GNU-Linux' -L../QPAUtility/dist/Debug/GNU-Linux -lQPAUtility -Wl,-rpath,'../QPADissector/dist/Debug/GNU-Linux' -L../QPADissector/dist/Debug/GNU-Linux -lQPADissector -Wl,-rpath,'../QPAFieldType/dist/Debug/GNU-Linux' -L../QPAFieldType/dist/Debug/GNU-Linux -lQPAFieldType
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -60,12 +60,18 @@ LDLIBSOPTIONS=-Wl,-rpath,'../QPAFileHelper/dist/Debug/GNU-Linux' -L../QPAFileHel
 	${CP} ../QPAFileHelper/dist/Debug/GNU-Linux/libQPAFileHelper.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${CP} ../QPASkeleton/dist/Debug/GNU-Linux/libQPASkeleton.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${CP} ../QPAUtility/dist/Debug/GNU-Linux/libQPAUtility.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
+	${CP} ../QPADissector/dist/Debug/GNU-Linux/libQPADissector.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
+	${CP} ../QPAFieldType/dist/Debug/GNU-Linux/libQPAFieldType.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/qprotocolanalyzer: ../QPAFileHelper/dist/Debug/GNU-Linux/libQPAFileHelper.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/qprotocolanalyzer: ../QPASkeleton/dist/Debug/GNU-Linux/libQPASkeleton.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/qprotocolanalyzer: ../QPAUtility/dist/Debug/GNU-Linux/libQPAUtility.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/qprotocolanalyzer: ../QPADissector/dist/Debug/GNU-Linux/libQPADissector.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/qprotocolanalyzer: ../QPAFieldType/dist/Debug/GNU-Linux/libQPAFieldType.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/qprotocolanalyzer: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -74,18 +80,20 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/qprotocolanalyzer: ${OBJECTFILES}
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../QPAFileHelper/src -I../QPASkeleton/src -I../QPAUtility/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I../QPAFileHelper/src -I../QPASkeleton/src -I../QPAUtility/src -I../QPADissector/src -I../QPAFieldType/src -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
 	cd ../QPAFileHelper && ${MAKE}  -f Makefile CONF=Debug
 	cd ../QPASkeleton && ${MAKE}  -f Makefile CONF=Debug
 	cd ../QPAUtility && ${MAKE}  -f Makefile CONF=Debug
+	cd ../QPADissector && ${MAKE}  -f Makefile CONF=Debug
+	cd ../QPAFieldType && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPASkeleton.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAUtility.so
+	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPASkeleton.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAUtility.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPADissector.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFieldType.so
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/qprotocolanalyzer
 
 # Subprojects
@@ -93,6 +101,8 @@ ${OBJECTDIR}/main.o: main.cpp
 	cd ../QPAFileHelper && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../QPASkeleton && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../QPAUtility && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../QPADissector && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../QPAFieldType && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

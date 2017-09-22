@@ -31,6 +31,8 @@ public:
     {
         return _data;
     }
+    
+    UINT8 *ws_buffer_start_ptr();
 
 protected:
 

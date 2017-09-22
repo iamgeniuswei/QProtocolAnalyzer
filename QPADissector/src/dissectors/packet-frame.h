@@ -21,17 +21,20 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "ws_symbol_export.h"
+//#include "ws_symbol_export.h"
 
 /*
  * Routine used to register frame end routine.  The routine should only
  * be registred when the dissector is used in the frame, not in the
  * proto_register_XXX function.
  */
-void
-register_frame_end_routine(packet_info *pinfo, void (*func)(void));
+//void
+//register_frame_end_routine(packet_info *pinfo, void (*func)(void));
 
 /*
  * The frame dissector and the PPI dissector both use this
  */
-extern dissector_table_t wtap_encap_dissector_table;
+//extern dissector_table_t wtap_encap_dissector_table;
+extern
+void
+proto_register_frame(void);

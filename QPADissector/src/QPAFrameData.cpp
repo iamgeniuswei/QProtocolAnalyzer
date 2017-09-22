@@ -21,3 +21,7 @@ QPAFrameData::~QPAFrameData()
 {
 }
 
+void QPAFrameData::init()
+{
+
+}

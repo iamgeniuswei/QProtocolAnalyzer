@@ -13,7 +13,7 @@
 
 #ifndef QPAFRAMEDATA_H
 #define QPAFRAMEDATA_H
-
+#include "QPAGlobalDefine.h"
 class QPAFrameData
 {
 public:
@@ -23,10 +23,17 @@ public:
     QPAFrameData& operator=(const QPAFrameData& orig) = delete;
     QPAFrameData& operator=(const QPAFrameData&& orig) = delete;
     virtual ~QPAFrameData();
+    void init();
 
 protected:
 
 private:
+    UINT32 num;
+    UINT32 pkt_len;
+    UINT32 cap_len;
+    UINT32 cum_bytes;
+    INT64 file_off;
+    UINT16 subnum;
 
 };
 

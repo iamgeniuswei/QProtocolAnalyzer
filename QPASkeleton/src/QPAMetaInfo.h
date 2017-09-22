@@ -57,7 +57,7 @@ private:
     bool _isCompressed;
     int _link;
     std::vector<std::string> _linkType;
-    unsigned int _count;
+    unsigned int _count = 0;
     ssize_t _packet_comment_count;
     unsigned int _displayed_count;
     unsigned int _marked_count;

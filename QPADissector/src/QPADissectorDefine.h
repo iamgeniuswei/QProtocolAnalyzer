@@ -13,7 +13,16 @@
 
 #ifndef QPADISSECTORDEFINE_H
 #define QPADISSECTORDEFINE_H
-typedef int (*new_dissector_t)(void *, void *, void *, void *);
+class QPATvbuff;
+class QPAPacketInfo;
+class QPAProtoNode;
+#include <memory>
+
+#include "QPATvbuff.h"
+#include "QPAPacketInfo.h"
+#include "QPAProtoNode.h"
+using namespace std;
+typedef int (*new_dissector_t)(shared_ptr<QPATvbuff> tvb, shared_ptr<QPAPacketInfo> pi, shared_ptr<QPAProtoNode> pnode, void *);
 typedef void (*dissector_t)(void *, void *, void *);
 
 #endif /* QPADISSECTORDEFINE_H */

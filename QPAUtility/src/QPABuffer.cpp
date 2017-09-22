@@ -47,3 +47,8 @@ QPABuffer::ws_buffer_assure_space(UINT32 space)
 {
 
 }
+
+UINT8* QPABuffer::ws_buffer_start_ptr()
+{
+    return (_data + _start);
+}

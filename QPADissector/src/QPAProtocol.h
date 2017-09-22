@@ -17,13 +17,21 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <memory>
 
-
+#include "QPAHeaderFieldInfo.h"
+using namespace std;
+class QPAHeaderFieldInfo;
 class QPAProtocol
 {
     friend class QPADissector;
+    friend class QPAProtocolHelper;
+    friend class QPAProtoNode;
+    
 public:
-    QPAProtocol();
+    QPAProtocol(const string& name,
+                const string& short_name,
+                const string& filter_name);
     QPAProtocol(const QPAProtocol& orig) = delete;
     QPAProtocol(const QPAProtocol&& orig) = delete;
     QPAProtocol& operator=(const QPAProtocol& orig) = delete;
@@ -34,12 +42,12 @@ protected:
 
 private:
     std::string _name;
-    std::string _shortName;
-    std::string _filterName;
-//    std::vector<void*> _fields;
-    int _protoID;
-    bool _isEnabled;
-    bool _canToggle;
+    std::string _short_name;
+    std::string _filter_name;
+    std::vector<std::shared_ptr<QPAHeaderFieldInfo>> _fields;
+    int _proto_id;
+    bool _is_enabled = true;
+    bool _can_toggle = true;
 //    std::list<void> _heurList;
 };
 

@@ -19,7 +19,7 @@
 
 #include "QPASkeletonDefine.h"
 #include "QPAMetaInfo.h"
-
+class QPADissection;
 class QPAAbstractFile;
 class QPAPacketReader {
 public:
@@ -28,6 +28,7 @@ public:
     virtual ~QPAPacketReader();
     cf_status_t openPacketFile(const std::string& path);
     cf_read_status_t readPacket();
+    int readNewPacket(std::shared_ptr<QPADissection> _edt, ssize_t offset);
 
 protected:
 

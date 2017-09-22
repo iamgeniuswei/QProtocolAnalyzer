@@ -30,7 +30,7 @@ public:
 
 protected:
 
-private:
+public:
     std::string _name;
     bool _isNew;
     union

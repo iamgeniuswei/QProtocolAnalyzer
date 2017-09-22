@@ -11,6 +11,7 @@
             <make-dep-projects>
                 <make-dep-project>../QPAFileHelper</make-dep-project>
                 <make-dep-project>../QPAUtility</make-dep-project>
+                <make-dep-project>../QPAFieldType</make-dep-project>
                 <make-dep-project>../QPADissector</make-dep-project>
             </make-dep-projects>
             <sourceRootList/>

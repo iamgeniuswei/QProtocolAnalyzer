@@ -13,9 +13,12 @@
 
 #include "QPAProtocol.h"
 
-QPAProtocol::QPAProtocol()
+QPAProtocol::QPAProtocol(const string& name, const string& short_name, const string& filter_name)
+:_name(name), _short_name(short_name), _filter_name(filter_name)
 {
+
 }
+
 
 QPAProtocol::~QPAProtocol()
 {

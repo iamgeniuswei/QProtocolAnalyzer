@@ -2,16 +2,34 @@
 <configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="f1" displayName="dissectors" projectFiles="true">
+      <itemPath>src/dissectors/packet-frame.cpp</itemPath>
+      <itemPath>src/dissectors/packet-frame.h</itemPath>
     </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>src/QPAAddress.h</itemPath>
+      <itemPath>src/QPADissection.h</itemPath>
       <itemPath>src/QPADissectionSession.h</itemPath>
       <itemPath>src/QPADissector.h</itemPath>
       <itemPath>src/QPADissectorDefine.h</itemPath>
       <itemPath>src/QPADissectorHelper.h</itemPath>
+      <itemPath>src/QPAExpertField.h</itemPath>
+      <itemPath>src/QPAFieldInfo.h</itemPath>
       <itemPath>src/QPAFrameData.h</itemPath>
+      <itemPath>src/QPAFrameTvbuff.h</itemPath>
+      <itemPath>src/QPAGlobalHFMetaInfo.h</itemPath>
+      <itemPath>src/QPAHeaderFieldInfo.h</itemPath>
+      <itemPath>src/QPAHeaderFieldRegisterInfo.h</itemPath>
+      <itemPath>src/QPAPacketInfo.h</itemPath>
+      <itemPath>src/QPAProtoNode.h</itemPath>
       <itemPath>src/QPAProtocol.h</itemPath>
+      <itemPath>src/QPAProtocolHelper.h</itemPath>
+      <itemPath>src/QPATimeFmt.h</itemPath>
+      <itemPath>src/QPATreeData.h</itemPath>
+      <itemPath>src/QPATvbuff.h</itemPath>
+      <itemPath>src/QPAValueString.h</itemPath>
+      <itemPath>src/exceptions.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -20,11 +38,25 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>src/QPAAddress.cpp</itemPath>
+      <itemPath>src/QPADissection.cpp</itemPath>
       <itemPath>src/QPADissectionSession.cpp</itemPath>
       <itemPath>src/QPADissector.cpp</itemPath>
       <itemPath>src/QPADissectorHelper.cpp</itemPath>
+      <itemPath>src/QPAExpertField.cpp</itemPath>
+      <itemPath>src/QPAFieldInfo.cpp</itemPath>
       <itemPath>src/QPAFrameData.cpp</itemPath>
+      <itemPath>src/QPAFrameTvbuff.cpp</itemPath>
+      <itemPath>src/QPAGlobalHFMetaInfo.cpp</itemPath>
+      <itemPath>src/QPAHeaderFieldInfo.cpp</itemPath>
+      <itemPath>src/QPAHeaderFieldRegisterInfo.cpp</itemPath>
+      <itemPath>src/QPAPacketInfo.cpp</itemPath>
+      <itemPath>src/QPAProtoNode.cpp</itemPath>
       <itemPath>src/QPAProtocol.cpp</itemPath>
+      <itemPath>src/QPAProtocolHelper.cpp</itemPath>
+      <itemPath>src/QPATreeData.cpp</itemPath>
+      <itemPath>src/QPATvbuff.cpp</itemPath>
+      <itemPath>src/QPAValueString.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -51,6 +83,8 @@
           <standard>8</standard>
           <incDir>
             <pElem>../../QProtocolAnalyzer/QPAUtility/src</pElem>
+            <pElem>../QPAFileHelper/src</pElem>
+            <pElem>../QPAFieldType/src</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
@@ -67,9 +101,41 @@
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAUtility.${CND_DLIB_EXT}">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../QPAFileHelper"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../QPAFileHelper"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFileHelper.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../QPAFieldType"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../QPAFieldType"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFieldType.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="src/QPAAddress.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAAddress.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPADissection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPADissection.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/QPADissectionSession.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/QPADissectionSession.h" ex="false" tool="3" flavor2="0">
@@ -84,13 +150,69 @@
       </item>
       <item path="src/QPADissectorHelper.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/QPAExpertField.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAExpertField.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAFieldInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAFieldInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/QPAFrameData.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/QPAFrameData.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/QPAFrameTvbuff.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAFrameTvbuff.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAGlobalHFMetaInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAGlobalHFMetaInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAHeaderFieldInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAHeaderFieldInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAHeaderFieldRegisterInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAHeaderFieldRegisterInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAPacketInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAPacketInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAProtoNode.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAProtoNode.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/QPAProtocol.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/QPAProtocol.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAProtocolHelper.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAProtocolHelper.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPATimeFmt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPATreeData.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPATreeData.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPATvbuff.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPATvbuff.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAValueString.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAValueString.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/dissectors/packet-frame.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/dissectors/packet-frame.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/exceptions.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="2">
@@ -113,6 +235,14 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="src/QPAAddress.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAAddress.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPADissection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPADissection.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/QPADissectionSession.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/QPADissectionSession.h" ex="false" tool="3" flavor2="0">
@@ -127,13 +257,69 @@
       </item>
       <item path="src/QPADissectorHelper.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/QPAExpertField.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAExpertField.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAFieldInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAFieldInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/QPAFrameData.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/QPAFrameData.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/QPAFrameTvbuff.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAFrameTvbuff.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAGlobalHFMetaInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAGlobalHFMetaInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAHeaderFieldInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAHeaderFieldInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAHeaderFieldRegisterInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAHeaderFieldRegisterInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAPacketInfo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAPacketInfo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAProtoNode.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAProtoNode.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/QPAProtocol.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/QPAProtocol.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAProtocolHelper.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAProtocolHelper.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPATimeFmt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPATreeData.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPATreeData.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPATvbuff.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPATvbuff.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/QPAValueString.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/QPAValueString.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/dissectors/packet-frame.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/dissectors/packet-frame.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/exceptions.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

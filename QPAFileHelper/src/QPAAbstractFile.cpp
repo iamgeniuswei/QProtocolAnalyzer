@@ -17,6 +17,17 @@
 
 QPAAbstractFile::QPAAbstractFile()
 {
+    _phdr = std::make_shared<QPAAbstractPacketHeader>();
+}
+
+std::shared_ptr<QPAAbstractPacketHeader> QPAAbstractFile::phdr()
+{
+    return _phdr;
+}
+
+std::shared_ptr<QPABuffer> QPAAbstractFile::frameBuffer()
+{
+    return _frameBuffer;
 }
 
 QPAAbstractFile::~QPAAbstractFile()
@@ -35,7 +46,7 @@ bool QPAAbstractFile::openOffline(const std::string& path, unsigned int type, bo
     if (_openRoutine->openRoutine() != WTAP_OPEN_MINE)
         return false;
     _frameBuffer = std::make_shared<QPABuffer>();
-    _frameBuffer->ws_buffer_init(1500);
+    _frameBuffer->ws_buffer_init(150000);
     return true;
 }
 

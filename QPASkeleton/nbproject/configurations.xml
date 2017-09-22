@@ -39,6 +39,7 @@
             <pElem>../QPAFileHelper/src</pElem>
             <pElem>../QPAUtility/src</pElem>
             <pElem>../QPADissector/src</pElem>
+            <pElem>../QPAFieldType/src</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
@@ -77,6 +78,18 @@
                             BC="${MAKE}  -f Makefile CONF=Debug"
                             CC="${MAKE}  -f Makefile CONF=Debug clean"
                             OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPADissector.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../QPAFieldType"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../QPAFieldType"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFieldType.${CND_DLIB_EXT}">
               </makeArtifact>
             </linkerLibProjectItem>
           </linkerLibItems>

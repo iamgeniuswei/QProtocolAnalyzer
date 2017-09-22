@@ -157,6 +157,14 @@ copyFileToTmpDir "${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAUtility.so" "
 
 cd "${TOP}"
 makeDirectory "${NBTMPDIR}/qprotocolanalyzer/bin"
+copyFileToTmpDir "${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPADissector.so" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/libQPADissector.so" 0755
+
+cd "${TOP}"
+makeDirectory "${NBTMPDIR}/qprotocolanalyzer/bin"
+copyFileToTmpDir "${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAFieldType.so" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/libQPAFieldType.so" 0755
+
+cd "${TOP}"
+makeDirectory "${NBTMPDIR}/qprotocolanalyzer/bin"
 copyFileToTmpDir "${OUTPUT_PATH}" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
