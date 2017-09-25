@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>src/charsets.h</itemPath>
+      <itemPath>src/config.h</itemPath>
+      <itemPath>src/except.h</itemPath>
+      <itemPath>src/exceptions.h</itemPath>
+      <itemPath>src/ipv6-utils.h</itemPath>
+      <itemPath>src/proto.h</itemPath>
+      <itemPath>src/strutil.h</itemPath>
+      <itemPath>src/tvbuff-int.h</itemPath>
+      <itemPath>src/tvbuff.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>src/charsets.cpp</itemPath>
+      <itemPath>src/except.cpp</itemPath>
+      <itemPath>src/strutil.cpp</itemPath>
+      <itemPath>src/tvbuff.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <incDir>
+            <pElem>../QPAMemoryManager/src</pElem>
+            <pElem>../QPAUtility/src</pElem>
+          </incDir>
+          <commandLine>`pkg-config --cflags --libs glib-2.0`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../QPAMemoryManager"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../QPAMemoryManager"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAMemoryManager.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../QPAUtility"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../QPAUtility"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libQPAUtility.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="src/charsets.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/charsets.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/except.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/except.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/exceptions.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ipv6-utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/proto.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/strutil.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/strutil.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tvbuff-int.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tvbuff.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tvbuff.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="src/charsets.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/charsets.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/except.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/except.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/exceptions.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ipv6-utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/proto.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/strutil.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/strutil.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tvbuff-int.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tvbuff.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/tvbuff.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

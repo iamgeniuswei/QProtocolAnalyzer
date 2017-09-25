@@ -38,15 +38,19 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/QPABuffer.o \
 	${OBJECTDIR}/src/QPAMapHelper.o \
 	${OBJECTDIR}/src/QPAMapManager.o \
-	${OBJECTDIR}/src/QPATimestamp.o
+	${OBJECTDIR}/src/QPATimestamp.o \
+	${OBJECTDIR}/src/nstime.o \
+	${OBJECTDIR}/src/str_util.o \
+	${OBJECTDIR}/src/time_util.o \
+	${OBJECTDIR}/src/ws_mempbrk.o
 
 
 # C Compiler Flags
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=`pkg-config --cflags --libs glib-2.0` 
+CXXFLAGS=`pkg-config --cflags --libs glib-2.0` 
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -84,6 +88,26 @@ ${OBJECTDIR}/src/QPATimestamp.o: src/QPATimestamp.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/QPATimestamp.o src/QPATimestamp.cpp
+
+${OBJECTDIR}/src/nstime.o: src/nstime.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/nstime.o src/nstime.cpp
+
+${OBJECTDIR}/src/str_util.o: src/str_util.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/str_util.o src/str_util.cpp
+
+${OBJECTDIR}/src/time_util.o: src/time_util.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/time_util.o src/time_util.cpp
+
+${OBJECTDIR}/src/ws_mempbrk.o: src/ws_mempbrk.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ws_mempbrk.o src/ws_mempbrk.cpp
 
 # Subprojects
 .build-subprojects:

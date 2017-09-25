@@ -8,12 +8,23 @@
       <itemPath>src/QPAMapManager.h</itemPath>
       <itemPath>src/QPATimestamp.h</itemPath>
       <itemPath>src/QPAUtilityDefine.h</itemPath>
+      <itemPath>src/nstime.h</itemPath>
+      <itemPath>src/pin.h</itemPath>
+      <itemPath>src/sign_ext.h</itemPath>
+      <itemPath>src/str_util.h</itemPath>
+      <itemPath>src/time_util.h</itemPath>
+      <itemPath>src/unicode-utils.h</itemPath>
+      <itemPath>src/ws_mempbrk.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
       <itemPath>src/QPABuffer.cpp</itemPath>
       <itemPath>src/QPAMapHelper.cpp</itemPath>
       <itemPath>src/QPAMapManager.cpp</itemPath>
       <itemPath>src/QPATimestamp.cpp</itemPath>
+      <itemPath>src/nstime.cpp</itemPath>
+      <itemPath>src/str_util.cpp</itemPath>
+      <itemPath>src/time_util.cpp</itemPath>
+      <itemPath>src/ws_mempbrk.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles" displayName="资源文件" projectFiles="true">
     </logicalFolder>
@@ -40,6 +51,7 @@
       <compileType>
         <ccTool>
           <standard>8</standard>
+          <commandLine>`pkg-config --cflags --libs glib-2.0`</commandLine>
         </ccTool>
       </compileType>
       <item path="src/QPABuffer.cpp" ex="false" tool="1" flavor2="0">
@@ -61,6 +73,28 @@
       <item path="src/QPATimestamp.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/QPAUtilityDefine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/nstime.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/nstime.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/pin.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/sign_ext.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/str_util.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/str_util.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/time_util.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/time_util.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/unicode-utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ws_mempbrk.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ws_mempbrk.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="2">
@@ -102,6 +136,28 @@
       <item path="src/QPATimestamp.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/QPAUtilityDefine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/nstime.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/nstime.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/pin.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/sign_ext.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/str_util.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/str_util.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/time_util.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/time_util.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/unicode-utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ws_mempbrk.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ws_mempbrk.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
